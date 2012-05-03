@@ -51,4 +51,4 @@ conf.registerGlobalValue(BGs, 'measurementTransitionValue',
 conf.registerGlobalValue(BGs, 'defaultLastBGCount',
 	registry.PositiveInteger(10, """If no count is specified, the "bgs last" command will return up to this many values."""))
 
-# vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
+# vim:set shiftwidth=8 tabstop=8 noexpandtab textwidth=119:

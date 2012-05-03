@@ -384,4 +384,4 @@ class BGs(callbacks.Plugin):
 Class = BGs
 
 
-# vim:set shiftwidth=4 softtabstop=4 expandtab textwidth=79:
+# vim:set shiftwidth=8 tabstop=8 noexpandtab textwidth=119:
