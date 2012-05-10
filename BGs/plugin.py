@@ -1,5 +1,5 @@
 ###
-# Copyright (c) 2012, Andrew Cook
+# Copyright (c) 2012, Andrew Cook, Halley Jacobs
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -201,9 +201,9 @@ class BGs(callbacks.Plugin):
 		"""<glucose test result> [<tag> ...]
 		
 		Marks a message as a blood glucose reading and gives a conversion.  If you've opted in to saving your 
-		information ("`bgoptin") you can save notes along with the bg reading. 
-		For example, "`bg 120 post breakfast" would save "post breakfast" with the blood sugar reading of 120.
-		To see a list of bg related commands, use "`list BGs".
+		information using "`bgoptin" you can save notes (listed alphabetically) along with the bg reading. 
+		For example, "`bg 120 post breakfast" would save "breakfast" and "post" with the blood sugar reading
+		of 120. To see a list of bg related commands, use "`list BGs".
 		"""
 		if not self.db.isruser(self.Getnick(msg)):
 			self._Ubg(irc, msg, args, testlvl)
@@ -239,8 +239,11 @@ class BGs(callbacks.Plugin):
 	def last(self, irc, msg, args, count, tags):
 		"""[<result count>] [<tag> ...]
 		
-		Returns the last <result count> blood glucose readings, or a number set by awaxa. 
-		You can add a note afterward to only show readings with that note. All readings are in Eastern Time.
+		Returns the last several blood glucose readings. You can specify how may you want by adding a number 
+		after the command. For example, "`lastbgs 6" returns the last six blood glucose readings. You can add 
+		a tag afterward to show only those readings containing that tag for example, "`lastbgs breakfast" 
+		returns the last several readings containing the tag "breakfast." 
+		All readings are stored and returned in Eastern Time.
 		"""
 		if not self.db.isruser(self.Getnick(msg)):
 			self._Ulastbgs(irc, msg, args, count)
@@ -319,7 +322,7 @@ class BGs(callbacks.Plugin):
 	def bgoops(self, irc, msg, args):
 		"""
 		
-		Forgets the last blood glucose reading, e.g. in case of mistake.
+		Removes the last blood glucose reading from the log, e.g. in case of mistake.
 		"""
 		if not self.db.isruser(self.Getnick(msg)):
 			self._Ubgoops(irc, msg, args)
@@ -343,8 +346,11 @@ class BGs(callbacks.Plugin):
 	def bgoptin(self, irc, msg, args, count, period):
 		"""<count> {days|entries}
 		
-		Starts specifically saving your blood glucose readings. Entries will expire 
-		after the certain number of days or entries. To remove this information, use "`bgoptout".
+		Begins specifically saving your blood glucose readings for the number of days or entries that you 
+		specify. When you list your BGs or enter a new one, expired entries are deleted. For example, 
+		"`bgoptin 90 days" stores your blood glucose readings for 90 days, after which they are removed. 
+		While we try to keep your information safe and private, please note that you opt in at your own risk.
+		To remove all your information from the database, use "`bgoptout".
 		"""
 		if self.db.isruser(self.Getnick(msg)):
 			self.db.reguser(self.Getnick(msg), count, period.group())
@@ -364,8 +370,8 @@ class BGs(callbacks.Plugin):
 	def bgoptout(self, irc, msg, args):
 		"""
 		
-		Forgets all of your blood glucose readings and other information 
-		and solely uses the chat history to track them.
+		Removes all of your blood glucose readings and other information from the database. Only blood 
+		glucose readings in the chat history will be accessible after using this command.
 		"""
 		if not self.db.isruser(self.Getnick(msg)):
 			irc.replySuccess()
