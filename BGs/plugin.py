@@ -241,9 +241,9 @@ class BGs(callbacks.Plugin):
 		
 		Returns the last several blood glucose readings. You can specify how may you want by adding a number 
 		after the command. For example, "`lastbgs 6" returns the last six blood glucose readings. You can add 
-		a tag afterward to show only those readings containing that tag for example, "`lastbgs breakfast" 
-		returns the last several readings containing the tag "breakfast." 
-		All readings are stored and returned in Eastern Time.
+		tags afterward to show only those readings containing those tags; for example, "`lastbgs breakfast" 
+		returns the last several readings containing the tag "breakfast." All readings are returned in 
+		USA Eastern Time.
 		"""
 		if not self.db.isruser(self.Getnick(msg)):
 			self._Ulastbgs(irc, msg, args, count)
