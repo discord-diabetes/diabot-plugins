@@ -205,7 +205,7 @@ class BGs(callbacks.Plugin):
 		For example, "`bg 120 post breakfast" would save "breakfast" and "post" with the blood sugar reading
 		of 120. To see a list of bg related commands, use "`list BGs".
 		"""
-		if not self.db.isruser(self.Getnick(msg)):
+		if not self.db.isruser(self._getNick(msg)):
 			self._Ubg(irc, msg, args, testlvl)
 			if tags and len(tags):
 				irc.reply("To save tags, you must opt in. Say \"`help bgoptin\" to learn more.")
@@ -222,15 +222,15 @@ class BGs(callbacks.Plugin):
 	
 	def _Rbg(self, irc, msg, args, testlvl, tags):
 		msg.tag('bg', testlvl) #in case of an opt-out later
-		self.db.pruneuser(self.Getnick(msg))
-		self.db.addbg(self.Getnick(msg), testlvl, tags)
-		meter = self.db.getmeter(self.Getnick(msg))
+		self.db.pruneuser(self._getNick(msg))
+		self.db.addbg(self._getNick(msg), testlvl, tags)
+		meter = self.db.getmeter(self._getNick(msg))
 		if not meter:
 			if testlvl <= self.registryValue('measurementTransitionValue'):
 				meter = 2
 			else:
 				meter = 1
-			self.db.setmeter(self.Getnick(msg), meter)
+			self.db.setmeter(self._getNick(msg), meter)
 		if meter == 2:
 			irc.reply("{0:.1f} mmol/L = {1:.0f} mg/dL".format(testlvl, testlvl * 18.0182))
 		else:
@@ -245,7 +245,7 @@ class BGs(callbacks.Plugin):
 		returns the last several readings containing the tag "breakfast." All readings are returned in 
 		USA Eastern Time.
 		"""
-		if not self.db.isruser(self.Getnick(msg)):
+		if not self.db.isruser(self._getNick(msg)):
 			self._Ulastbgs(irc, msg, args, count)
 		else:
 			self._Rlastbgs(irc, msg, args, count, tags)
@@ -285,9 +285,9 @@ class BGs(callbacks.Plugin):
 	def _Rlastbgs(self, irc, msg, args, count, tags):
 		def _implode(str, elm):
 			return str + ' ' + elm
-		self.db.pruneuser(self.Getnick(msg))
+		self.db.pruneuser(self._getNick(msg))
 		if not count: count = self.registryValue('defaultLastBGCount')
-		r = self.db.getbgs(self.Getnick(msg), count, tags)
+		r = self.db.getbgs(self._getNick(msg), count, tags)
 		if len(r) == 0:
 			if tags:
 				irc.reply("Sorry, no BGs with all those tags on file.")
@@ -295,7 +295,7 @@ class BGs(callbacks.Plugin):
 				irc.reply("Sorry, no BGs on file.")
 			return
 		f = []
-		met = self.db.getmeter(self.Getnick(msg))
+		met = self.db.getmeter(self._getNick(msg))
 		for m in r:
 			s = ""
 			now = datetime.now()
@@ -324,7 +324,7 @@ class BGs(callbacks.Plugin):
 		
 		Removes the last blood glucose reading from the log, e.g. in case of mistake.
 		"""
-		if not self.db.isruser(self.Getnick(msg)):
+		if not self.db.isruser(self._getNick(msg)):
 			self._Ubgoops(irc, msg, args)
 		else:
 			self._Rbgoops(irc, msg, args)
@@ -340,7 +340,7 @@ class BGs(callbacks.Plugin):
 		irc.replySuccess()
 	
 	def _Rbgoops(self, irc, msg, args):
-		self.db.oopsbg(self.Getnick(msg))
+		self.db.oopsbg(self._getNick(msg))
 		irc.replySuccess()
 	
 	def bgoptin(self, irc, msg, args, count, period):
@@ -352,17 +352,17 @@ class BGs(callbacks.Plugin):
 		While we try to keep your information safe and private, please note that you opt in at your own risk.
 		To remove all your information from the database, use "`bgoptout".
 		"""
-		if self.db.isruser(self.Getnick(msg)):
-			self.db.reguser(self.Getnick(msg), count, period.group())
+		if self.db.isruser(self._getNick(msg)):
+			self.db.reguser(self._getNick(msg), count, period.group())
 			irc.replySuccess()
 			return
-		self.db.reguser(self.Getnick(msg), count, period.group())
+		self.db.reguser(self._getNick(msg), count, period.group())
 		r = []
 		h = reversed(irc.state.history)
 		for m in h:
 			if m.nick.lower() == msg.nick.lower() and m.tagged('bg'):
-				self.db.addbg(self.Getnick(msg), m.tagged('bg'), [], m.tagged('receivedAt'))
-		self.db.pruneuser(self.Getnick(msg))
+				self.db.addbg(self._getNick(msg), m.tagged('bg'), [], m.tagged('receivedAt'))
+		self.db.pruneuser(self._getNick(msg))
 		irc.replySuccess()
 	bgoptin = wrap(bgoptin, ['int', ('matches', re.compile('(days)|(entries)'), 
 		'You must specify a certain number of days or entries. No exceptions.')])
@@ -373,14 +373,14 @@ class BGs(callbacks.Plugin):
 		Removes all of your blood glucose readings and other information from the database. Only blood 
 		glucose readings in the chat history will be accessible after using this command.
 		"""
-		if not self.db.isruser(self.Getnick(msg)):
+		if not self.db.isruser(self._getNick(msg)):
 			irc.replySuccess()
 			return
-		self.db.deluser(self.Getnick(msg))
+		self.db.deluser(self._getNick(msg))
 		irc.replySuccess()
 	bgoptout = wrap(bgoptout)
 	
-	def Getnick(self, msg):
+	def _getNick(self, msg):
 		try:
 			user = ircdb.users.getUser(msg.prefix)
 			return user.name.lower()
