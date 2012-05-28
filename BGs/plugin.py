@@ -1,5 +1,5 @@
 ###
-# Copyright (c) 2012, Andrew Cook, Halley Jacobs
+# Copyright (c) 2012, Andrew Cook, Halley Jacobs, Greg Kitson
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -201,14 +201,14 @@ class BGs(callbacks.Plugin):
 		"""<glucose test result> [<tag> ...]
 		
 		Marks a message as a blood glucose reading and gives a conversion.  If you've opted in to saving your 
-		information using "`bgoptin" you can save notes (listed alphabetically) along with the bg reading. 
-		For example, "`bg 120 post breakfast" would save "breakfast" and "post" with the blood sugar reading
-		of 120. To see a list of bg related commands, use "`list BGs".
+		information using "bgoptin" you can save notes (listed alphabetically) along with the bg reading. 
+		For example, "bg 120 post breakfast" would save "breakfast" and "post" with the blood sugar reading
+		of 120. To see a list of bg related commands, use "list BGs".
 		"""
 		if not self.db.isruser(self._getNick(msg)):
 			self._Ubg(irc, msg, args, testlvl)
 			if tags and len(tags):
-				irc.reply("To save tags, you must opt in. Say \"`help bgoptin\" to learn more.")
+				irc.reply("To save tags, you must opt in. Say \"help bgoptin\" to learn more.")
 		else:
 			self._Rbg(irc, msg, args, testlvl, tags)
 	bg = wrap(bg, ['float', any('lowered')])
@@ -240,8 +240,8 @@ class BGs(callbacks.Plugin):
 		"""[<result count>] [<tag> ...]
 		
 		Returns the last several blood glucose readings. You can specify how may you want by adding a number 
-		after the command. For example, "`lastbgs 6" returns the last six blood glucose readings. You can add 
-		tags afterward to show only those readings containing those tags; for example, "`lastbgs breakfast" 
+		after the command. For example, "lastbgs 6" returns the last six blood glucose readings. You can add 
+		tags afterward to show only those readings containing those tags; for example, "lastbgs breakfast" 
 		returns the last several readings containing the tag "breakfast." All readings are returned in 
 		USA Eastern Time.
 		"""
@@ -348,9 +348,9 @@ class BGs(callbacks.Plugin):
 		
 		Begins specifically saving your blood glucose readings for the number of days or entries that you 
 		specify. When you list your BGs or enter a new one, expired entries are deleted. For example, 
-		"`bgoptin 90 days" stores your blood glucose readings for 90 days, after which they are removed. 
+		"bgoptin 90 days" stores your blood glucose readings for 90 days, after which they are removed. 
 		While we try to keep your information safe and private, please note that you opt in at your own risk.
-		To remove all your information from the database, use "`bgoptout".
+		To remove all your information from the database, use "bgoptout".
 		"""
 		if self.db.isruser(self._getNick(msg)):
 			self.db.reguser(self._getNick(msg), count, period.group())
