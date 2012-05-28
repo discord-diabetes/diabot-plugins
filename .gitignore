@@ -1,0 +1,6 @@
+# Compiled Source files
+*.pyc
+
+# Directories
+conf
+logs
