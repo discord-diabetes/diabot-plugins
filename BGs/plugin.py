@@ -364,7 +364,7 @@ class BGs(callbacks.Plugin):
 			irc.reply("BG {0:.0f} mg/dL ({1:.1f} mmol/L) ~= A1C {2:.1f}% ({3:.0f} mmol/mol)".format(bg, \
 					bg / 18.0182, (bg + 46.7) / 28.7, ((bg + 46.7) / 28.7 - 2.15) * 10.929))
 		else:
-			irc.reply("BG {0:.1f} mmol/L ({1:.0f} mg/dL) ~= A1C {2:.0f} mmol/mol ({3:.1f}%)".format(bg, \
+			irc.reply("BG {0:.1f} mmol/L ({1:.0f} mg/dL) ~= A1C {3:.0f} mmol/mol ({2:.1f}%)".format(bg, \
 					bg * 18.0182, (bg + 2.59) / 1.59, ((bg + 2.59) / 1.59 - 2.15) * 10.929))
 	esta1c = wrap(esta1c, ['float'])
 	ea1c = esta1c
