@@ -361,10 +361,10 @@ class BGs(callbacks.Plugin):
 			else:
 				meter = 1
 		if meter == 1:
-			irc.reply("BG {0.0} mg/dL ({1.1} mmol/L) ~= A1C {2.1}% ({3.0} mmol/mol)".format(bg, \
+			irc.reply("BG {0:.0f} mg/dL ({1:.1f} mmol/L) ~= A1C {2:.1f}% ({3:.0f} mmol/mol)".format(bg, \
 					bg / 18.0182, (bg + 46.7) / 28.7, ((bg + 46.7) / 28.7 - 2.15) * 10.929))
 		else:
-			irc.reply("BG {0.1} mmol/L ({1.0} mg/dL) ~= A1C {2.0} mmol/mol ({3.1}%)".format(bg, \
+			irc.reply("BG {0:.1f} mmol/L ({1:.0f} mg/dL) ~= A1C {2:.0f} mmol/mol ({3:.1f}%)".format(bg, \
 					bg * 18.0182, (bg + 2.59) / 1.59, ((bg + 2.59) / 1.59 - 2.15) * 10.929))
 	esta1c = wrap(esta1c, ['float'])
 	ea1c = esta1c
@@ -384,10 +384,10 @@ class BGs(callbacks.Plugin):
 			else:
 				a1cmode = 'IFCC'
 		if a1cmode == 'DCCT':
-			irc.reply("A1C {0.1}% ({1.0} mmol/mol) ~= BG {2.0} mg/dL ({3.1} mmol/L)".format(a1c, \
+			irc.reply("A1C {0:.1f}% ({1:.0f} mmol/mol) ~= BG {2:.0f} mg/dL ({3:.1f} mmol/L)".format(a1c, \
 				(a1c - 2.15) * 10.929, 28.7 * a1c - 46.7, 1.59 * a1c - 2.59))
 		else:
-			irc.reply("A1C {0.0} mmol/mol ({1.1}%) ~= BG {2.1} mmol/L ({3.0} mg/dL)".format(a1c, \
+			irc.reply("A1C {0:.0f} mmol/mol ({1:.1f}%) ~= BG {2:.1f} mmol/L ({3:.0f} mg/dL)".format(a1c, \
 				a1c / 10.929 + 2.15, (a1c / 10.929 + 2.15) * 1.59 - 2.59, \
 				(a1c / 10.929 + 2.15) * 28.7 - 46.7))
 	estbg = wrap(estbg, ['float', optional(('literal', ('DCCT', 'IFCC')))])
