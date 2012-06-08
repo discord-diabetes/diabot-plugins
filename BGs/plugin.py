@@ -185,7 +185,7 @@ class BGDB_SQLite(object):
 			self.pruneuser(user[0])
 
 BGDB = plugins.DB('BGs',
-                     {'sqlite': BGDB_SQLite})
+                     {'sqlite3': BGDB_SQLite , 'sqlite': BGDB_SQLite})
 
 class BGs(callbacks.Plugin):
 	def __init__(self, irc):
