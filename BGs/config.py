@@ -47,10 +47,12 @@ BGs = conf.registerPlugin('BGs')
 
 conf.registerGlobalValue(BGs, 'measurementTransitionValue',
 	registry.PositiveFloat(30, """For BG measurements at or below this value, BGs will assume measurements are in 
-					mmol/L by default, otherwise mg/dL. For A1C measurements at or below this 
-					value, BGs will assume measurements are in DCCT percentage by default, 
-					otherwise IFCC mmol/L."""))
-	
+					mmol/L by default, otherwise mg/dL."""))
+
+conf.registerGlobalValue(BGs, 'measurementTransitionValueA1C',
+	registry.PositiveFloat(20, """For A1C measurements at or below this value, BGs will assume measurements are in 
+					DCCT percentage by default, otherwise IFCC mmol/mol."""))
+
 conf.registerGlobalValue(BGs, 'defaultLastBGCount',
 	registry.PositiveInteger(10, """If no count is specified, the "bgs last" command will return up to this many values."""))
 

@@ -350,8 +350,9 @@ class BGs(callbacks.Plugin):
 		Estimates the results of a glycated hemoglobin (HbA_1C) test given an average blood glucose reading. 
 		For example, a consistent 154 mg/dL glucose (8.6 mmol/L) would produce an A1C of 7.0% (51 mmol/L).
 		Americans measure the percent of all hemoglobin that is glycated ("NGSP" or "DCCT", two famous
-		clinical trials), while Europeans measure in mmols per blood liter ("IFCC", a chemistry body).
+		clinical trials), while Europeans measure in mmols per mol ("IFCC", a chemistry body).
 		"""
+		meter = None
 		if self.db.isruser(self._getNick(msg)):
 			meter = self.db.getmeter(self._getNick(msg))
 		if not meter:
@@ -360,38 +361,36 @@ class BGs(callbacks.Plugin):
 			else:
 				meter = 1
 		if meter == 1:
-			irc.reply("BG {0.0} mg/dL ({1.1} mmol/L) ~= A1C {2.1}% ({3.0} mmol/L)".format(bg, \
+			irc.reply("BG {0.0} mg/dL ({1.1} mmol/L) ~= A1C {2.1}% ({3.0} mmol/mol)".format(bg, \
 					bg / 18.0182, (bg + 46.7) / 28.7, ((bg + 46.7) / 28.7 - 2.15) * 10.929))
 		else:
-			irc.reply("BG {0.1} mmol/L ({1.0} mg/dL) ~= A1C {2.0} mmol/L ({3.1}%)".format(bg, \
+			irc.reply("BG {0.1} mmol/L ({1.0} mg/dL) ~= A1C {2.0} mmol/mol ({3.1}%)".format(bg, \
 					bg * 18.0182, (bg + 2.59) / 1.59, ((bg + 2.59) / 1.59 - 2.15) * 10.929))
 	esta1c = wrap(esta1c, ['float'])
 	ea1c = esta1c
 	
-	def estbg(self, irc, msg, args, a1c):
-		"""<test result>
+	def estbg(self, irc, msg, args, a1c, a1cmode):
+		"""<test result> [DCCT|IFCC]
 		
 		Given the results of a glycated hemoglobin (HbA_1C) test, estimates the average blood glucose level
 		over the past 60-90 days. For example, an A1C of 7.0% (51 mmol/L) reflects an average glucose of 
 		154 mg/dL (8.6 mmol/L). Please note that the estimation has a very large margin of error.
 		Americans measure the percent of all hemoglobin that is glycated ("NGSP" or "DCCT", two famous
-		clinical trials), while Europeans measure in mmols per blood liter ("IFCC", a chemistry body).
+		clinical trials), while Europeans measure in mmols per mol ("IFCC", a chemistry body).
 		"""
-		if self.db.isruser(self._getNick(msg)):
-			meter = self.db.getmeter(self._getNick(msg))
-		if not meter:
-			if a1c <= self.registryValue('measurementTransitionValue'):
-				meter = 1
+		if a1cmode == None:
+			if a1c <= self.registryValue('measurementTransitionValueA1C'):
+				a1cmode = 'DCCT'
 			else:
-				meter = 2
-		if meter == 1:
-			irc.reply("A1C {0.1}% ({1.0} mmol/L) ~= BG {2.0} mg/dL ({3.1} mmol/L)".format(a1c, \
+				a1cmode = 'IFCC'
+		if a1cmode == 'DCCT':
+			irc.reply("A1C {0.1}% ({1.0} mmol/mol) ~= BG {2.0} mg/dL ({3.1} mmol/L)".format(a1c, \
 				(a1c - 2.15) * 10.929, 28.7 * a1c - 46.7, 1.59 * a1c - 2.59))
 		else:
-			irc.reply("A1C {0.0} mmol/L ({1.1}%) ~= BG {2.1} mmol/L ({3.0} mg/dL)".format(a1c, \
+			irc.reply("A1C {0.0} mmol/mol ({1.1}%) ~= BG {2.1} mmol/L ({3.0} mg/dL)".format(a1c, \
 				a1c / 10.929 + 2.15, (a1c / 10.929 + 2.15) * 1.59 - 2.59, \
 				(a1c / 10.929 + 2.15) * 28.7 - 46.7))
-	estbg = wrap(estbg, ['float'])
+	estbg = wrap(estbg, ['float', optional(('literal', ('DCCT', 'IFCC')))])
 	eag = estbg
 	ebg = estbg
 	
