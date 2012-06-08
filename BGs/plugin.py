@@ -367,6 +367,32 @@ class BGs(callbacks.Plugin):
 	esta1c = wrap(esta1c, ['float'])
 	ea1c = esta1c
 	
+	def estbg(self, irc, msg, args, a1c):
+		"""<test result>
+		
+		Given the results of a glycated hemoglobin (HbA_1C) test, estimates the average blood glucose level
+		over the past 60-90 days. For example, an A1C of 7.0% (51 mmol/L) reflects an average glucose of 
+		154 mg/dL (8.6 mmol/L). Please note that the estimation has a very large margin of error.
+		Americans measure the percent of all hemoglobin that is glycated ("NGSP" or "DCCT", two famous
+		clinical trials), while Europeans measure in mmols per blood liter ("IFCC", a chemistry body).
+		"""
+		if self.db.isruser(self._getNick(msg)):
+			meter = self.db.getmeter(self._getNick(msg))
+		if not meter:
+			if a1c <= self.registryValue('measurementTransitionValue'):
+				meter = 1
+			else:
+				meter = 2
+		if meter == 1:
+			irc.reply("A1C {0.1}% ({1.0} mmol/L) ~= BG {2.0} mg/dL ({3.1} mmol/L)".format(a1c, \
+				..., ..., ...)
+		else:
+			irc.reply("A1C {0.0} mmol/L ({1.1}%) ~= BG {2.1} mmol/L ({3.0} mg/dL)".format(a1c, \
+				..., ..., ...)
+	estbg = wrap(estbg, ['float'])
+	eag = estbg
+	ebg = estbg
+	
 	def bgoptin(self, irc, msg, args, count, period):
 		"""<count> {days|entries}
 		
