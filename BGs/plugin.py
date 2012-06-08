@@ -29,6 +29,7 @@
 ###
 
 import time as dumbtime
+from datetime import *
 import os
 import re
 import supybot.conf as conf
@@ -37,7 +38,7 @@ from supybot.commands import *
 import supybot.plugins as plugins
 import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
-from datetime import *
+import supybot.ircdb as ircdb
 
 
 class BGDB_SQLite(object):
@@ -415,7 +416,7 @@ class BGs(callbacks.Plugin):
 				self.db.addbg(self._getNick(msg), m.tagged('bg'), [], m.tagged('receivedAt'))
 		self.db.pruneuser(self._getNick(msg))
 		irc.replySuccess()
-	bgoptin = wrap(bgoptin, ['int', ('matches', re.compile('(days)|(entries)'), 
+	bgoptin = wrap(bgoptin, ['int', ('literal', ('days','entries'), 
 		'You must specify a certain number of days or entries. No exceptions.')])
 	
 	def bgoptout(self, irc, msg, args):
@@ -430,6 +431,8 @@ class BGs(callbacks.Plugin):
 		self.db.deluser(self._getNick(msg))
 		irc.replySuccess()
 	bgoptout = wrap(bgoptout)
+	
+	
 	
 	def _getNick(self, msg):
 		try:
