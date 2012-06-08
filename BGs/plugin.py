@@ -385,10 +385,11 @@ class BGs(callbacks.Plugin):
 				meter = 2
 		if meter == 1:
 			irc.reply("A1C {0.1}% ({1.0} mmol/L) ~= BG {2.0} mg/dL ({3.1} mmol/L)".format(a1c, \
-				..., ..., ...)
+				(a1c - 2.15) * 10.929, 28.7 * a1c - 46.7, 1.59 * a1c - 2.59)
 		else:
 			irc.reply("A1C {0.0} mmol/L ({1.1}%) ~= BG {2.1} mmol/L ({3.0} mg/dL)".format(a1c, \
-				..., ..., ...)
+				a1c / 10.929 + 2.15, (a1c / 10.929 + 2.15) * 1.59 - 2.59, \
+				(a1c / 10.929 + 2.15) * 28.7 - 46.7)
 	estbg = wrap(estbg, ['float'])
 	eag = estbg
 	ebg = estbg
