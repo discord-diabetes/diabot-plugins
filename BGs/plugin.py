@@ -342,6 +342,30 @@ class BGs(callbacks.Plugin):
 	def _Rbgoops(self, irc, msg, args):
 		self.db.oopsbg(self._getNick(msg))
 		irc.replySuccess()
+		
+	def esta1c(self, irc, msg, args, bg):
+		"""<bg>
+		
+		Estimates the results of a glycated hemoglobin (HbA_1C) test given an average blood glucose reading. 
+		For example, a consistent 154 mg/dL glucose (8.6 mmol/L) would produce an A1C of 7.0% (51 mmol/L).
+		Americans measure the percent of all hemoglobin that is glycated ("NGSP" or "DCCT", two famous
+		clinical trials), while Europeans measure in mmols per blood liter ("IFCC", a chemistry body).
+		"""
+		if self.db.isruser(self._getNick(msg)):
+			meter = self.db.getmeter(self._getNick(msg))
+		if not meter:
+			if bg <= self.registryValue('measurementTransitionValue'):
+				meter = 2
+			else:
+				meter = 1
+		if meter == 1:
+			irc.reply("BG {0.0} mg/dL ({1.1} mmol/L) ~= A1C {2.1}% ({3.0} mmol/L)".format(bg, \
+					bg / 18.0182, (bg + 46.7) / 28.7, ((bg + 46.7) / 28.7 - 2.15) * 10.929))
+		else:
+			irc.reply("BG {0.1} mmol/L ({1.0} mg/dL) ~= A1C {2.0} mmol/L ({3.1}%)".format(bg, \
+					bg * 18.0182, (bg + 2.59) / 1.59, ((bg + 2.59) / 1.59 - 2.15) * 10.929))
+	esta1c = wrap(esta1c, ['float'])
+	ea1c = esta1c
 	
 	def bgoptin(self, irc, msg, args, count, period):
 		"""<count> {days|entries}
