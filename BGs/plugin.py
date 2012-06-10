@@ -404,10 +404,10 @@ class BGs(callbacks.Plugin):
 		To remove all your information from the database, use "bgoptout".
 		"""
 		if self.db.isruser(self._getNick(msg)):
-			self.db.reguser(self._getNick(msg), count, period.group())
+			self.db.reguser(self._getNick(msg), count, period)
 			irc.replySuccess()
 			return
-		self.db.reguser(self._getNick(msg), count, period.group())
+		self.db.reguser(self._getNick(msg), count, period)
 		r = []
 		h = reversed(irc.state.history)
 		for m in h:
