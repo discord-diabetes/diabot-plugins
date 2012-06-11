@@ -348,7 +348,7 @@ class BGs(callbacks.Plugin):
 		"""<bg>
 		
 		Estimates the results of a glycated hemoglobin (HbA_1C) test given an average blood glucose reading. 
-		For example, a consistent 154 mg/dL glucose (8.6 mmol/L) would produce an A1C of 7.0% (51 mmol/L).
+		For example, a consistent 154 mg/dL glucose (8.6 mmol/L) would produce an A1C of 7.0% (51 mmol/mol).
 		Americans measure the percent of all hemoglobin that is glycated ("NGSP" or "DCCT", two famous
 		clinical trials), while Europeans measure in mmols per mol ("IFCC", a chemistry body).
 		"""
