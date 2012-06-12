@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Diabetes FAQ: Welcome to IRC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      
+      div.subnav:not(.subnav-fixed) ul.nav li:first-child
+      {
+	display:none;
+}
+
+pre, .inset
+{
+	margin-left:4em;
+	margin-right:4em;
+}
+em em
+{
+	font-style:normal;
+}
+    </style>
+    <link href="css/bootstrap.subhead.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!--
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://www.reddit.com/r/diabetes/">
+          	<img src="img/redditlogo.png" alt="Reddit Alien"/> /r/diabetes</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="index.html">About Diabetes</a></li>
+              <li><a href="reddit.html">About Reddit</a></li>
+              <li class="active"><a href="#">About IRC</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+	<div class="alert alert-error"><span class="label label-important">Disclaimer</span>
+	This FAQ is written by a large group of people with years of personal experience with their respective conditions. 
+	Nevertheless, none of us are doctors, and this should not be construed as medical advice. If you're looking for 
+	medical advice, please contact a physician or endocrinologist. Thank you, and be safe.</div>
+	<h1 id="welcome">Welcome to IRC</h1>
+	<p>A lot of members of the /r/diabetes reddit hang out on IRC, or Internet Relay Chat. You can find us on the 
+	<a href="http://www.freenode.net/">Freenode</a> network, in the #reddit-diabetes channel. You can 
+	<a href="irc://chat.freenode.net/reddit-diabetes">add it to your IRC client</a>, or 
+	<a href="http://webchat.freenode.net/?channels=%23reddit-diabetes">connect using your web browser</a>. There's 
+	almost always someone awake, and if you're on Google+ you can join our video hangouts as well.</p>
+		<p><em>To issue a diabot command, /msg it to the bot or include an accent (` or ') in front of it. To jump directly to the documentation for a diabot command, just click it in this list:</em></p>
+        <div class="subnav">
+          <ul class="nav nav-pills">
+            <li><a href="#welcome">Welcome to IRC</a></li>
+            <li><a href="#bg">bg</a></li>
+            <li><a href="#lastbgs">lastbgs</a></li>
+            <li><a href="#bgoops">bgoops</a></li>
+            <li><a href="#esta1c">esta1c</a></li>
+            <li><a href="#estbg">estbg</a></li>
+            <li><a href="#bgoptin">bgoptin</a></li>
+            <li><a href="#bgoptout">bgoptout</a></li>
+            <li><a href="#othercmds">Other useful commands</a></li>
+          </ul>
+        </div>
+      <h1>Your first visit</h1>
+		<p>So you've decided to come visit the IRC channel. Welcome! When you join, you're probably going to see 
+		something like this:</p>
+		<pre>[21:13:43] &lt;greenconverse&gt; Yeah, I would not EVER wear a tutu
+[21:13:49] &lt;oh_bother&gt; I have
+[21:13:50] &lt;greenconverse&gt; oh_bother: you should
+[21:14:05] &lt;daffyd-type1&gt; hahahaha
+[21:14:08] &lt;greenconverse&gt; I have....when I took ballet when I was 4 years old
+[21:14:08] &lt;oh_bother&gt; nothing beats the whimsy of a purple polka dotted tutu
+[21:14:16] &lt;greenconverse&gt; But....i'm not girly at all haha.
+[21:15:12] &lt;greenconverse&gt; but when guys do it...it's funny....but when girls do it...it's not a joke thing...it's a girl thing haha
+[21:15:37] &lt;oh_bother&gt; clearly you have not seen the tutus to which I refer
+[21:15:41] &lt;greenconverse&gt; clearly</pre>
+		<p>Diabetics are people too, and we talk about anything that's on our mind, not just diabetes. Diabetes 
+		conversations always come first, but feel free to join in about whatever you like; we're all in this together.</p>
+		<p>Soon, someone will type in a number and immediately get a reply:</p>
+		<pre>[22:01:40] &lt;toystoriegirl&gt; 182
+[22:01:40] &lt;@diabot&gt; toystoriegirl: 182 mg/dL = 10.1 mmol/L</pre>
+		<p>That's diabot, a program awaxa runs on his computer. It helps out in the channel doing various things. Here, 
+		it's translating blood sugars from one set of units to the other. Since Americans and Europeans use different 
+		units to track blood sugar, this helps us keep everyone on the same page. Posting your blood sugar to the 
+		channel helps you remember it better, and don't worry: we are not judgemental, and most of us have had bad days 
+		before. Try it and see.</p>
+		<p>After you've been participating in the discussion for a while, you might want to see how well you're doing. 
+		Diabot has you covered there as well. Type in <code>`lastbgs</code>, and it'll reply with the past few entries:</p>
+		<pre></pre>
+		<p>This is a good way to see how your blood sugar changes over time. Wait a minute... Someone asked you your age, and 
+		diabot thought it was a blood sugar? That's going to throw things off a bit. Let's fix that:</p>
+		<pre></pre>
+		<p>One of the pieces of paper you may have gotten from your doctor is an HbA<sub>1C</sub> lab report. The sugar in your 
+		blood changes your red blood cells slightly, and this can be used to figure out your average blood sugar over 
+		the life of those cells (about 60-90 days). Unfortunately, the math to make this conversion is rather 
+		complicated, but fortunately you're not the one who has to do it:</p>
+		<pre></pre>
+		<p>You can also go the other way, and see what A1C you'd get if you constantly had a certain blood sugar.</p>
+		<p>Once you've been chatting with us for a couple of days, you'll notice your `lastbgs results start 
+		disappearing. This is normal for two reasons. Firstly, by default, it will only print out the last ten, so it 
+		doesn't overwhelm you or the channel with lots and lots of numbers. Secondly, unless you specify otherwise, 
+		diabot will only store results within the past 1,000 chat messages. This is for both efficiency and privacy 
+		concerns. However, you can get it to store them for longer if you like:</p>
+		<pre></pre>
+		<div class="alert alert-warning inset"><span class="label label-warning">Privacy notice</span> While we follow 
+			industry standards for safeguarding the information stored in diabot, no security is perfect, and we are not 
+			responsible should the medical information you provide us become public knowledge. We operate this service 
+			for your convenience, but with no liability or warranty. If you do not want to take this risk, please do not 
+			opt in.</div>
+		<p>Diabot will then start storing your BGs in a separate database. From time to time, entries that become older 
+		than the retention period you set will be removed, to help protect your privacy, but they'll be held on to until 
+		then. This also lets you use another neat feature: tagging. You can add a list of words to your blood sugar, 
+		like "post breakfast" or "pizza", and they'll be shown in the list and can be used as a filter:</p>
+		<pre></pre>
+		<p>Finally, someone posted something that seems funny? Want diabot to remember it for future laughs later? Just 
+		`grab it!</p>
+		<pre></pre>
+		<p>This isn't everthing diabot can do, but hopefully you'll feel right at home.</p>
+		<h1>Command reference</h1>
+		<p><em>As a reminder, commands you send to the channel <em>must</em> begin with a ` or a ', while commands sent 
+		directly to the bot <em>must not</em> have anything in front.</em></p>
+		<h2 id="bg">bg</h2>
+		<p><strong>Usage:</strong> <code>bg <em>&lt;test result&gt; [tag ...]</em></code><br><strong>Shortcut:</strong> <code><em>&lt;test result&gt;</em></code></p>
+		<pre>[22:04:17] &lt;Ariensus&gt; 100
+[22:04:17] &lt;@diabot&gt; Ariensus: 100 mg/dL = 5.5 mmol/L</pre>
+		<p>Stores your blood sugar so it can be recalled later with lastbgs. It also prints a conversion from milligrams 
+		per decileter, used in the United States, to millimoles per liter, used in Europe, or the corresponding reverse 
+		conversion. If you've opted in to extended collection, you can also add a list of tag words, such as "post 
+		breakfast" or "pizzanight" which will be stored with the entry. (You must use the long form of the command, and 
+		their order will not be preserved.) Entries will be stored for 1,000 chat messages, or for however long you 
+		specified when opting in.</p>
+		<h2 id="lastbgs">lastbgs</h2>
+		<p><strong>Usage:</strong> <code>lastbgs <em>[count] [tag ...]</em></code></p>
+		<pre></pre>
+		<p>Prints out your last several blood sugar readings. You can specify how many you want to include; by default, 
+		only up to ten are displayed. If you've opted in to extended collection, you can also add a list of tag words 
+		(such as "post breakfast" or "pizzanight"), and only entries with all of those tag words will be displayed. The 
+		entries are displayed in the following format: <code>[time] BG (tag ...)</code>. If the entry is less than 24 hours old, only 
+		the time will be shown; if the entry is less than 7 days old, the weekday and time will be shown; otherwise the 
+		month, day, and time will be shown. All entries are shown in US Eastern Standard Time (GMT-5) or Eastern 
+		Daylight Time (GMT-4).</p>
+		<h2 id="bgoops">bgoops</h2>
+		<p><strong>Usage:</strong> <code>bgoops</code></p>
+		<pre></pre>
+		<p>Removes your last blood sugar entry. Useful if you have made a mistake or something has been misinterpreted 
+		as a blood sugar.</p>
+		<h2 id="esta1c">esta1c</h2>
+		<p><strong>Usage:</strong> <code>esta1c <em>&lt;average BG&gt;</em></code><br><strong>Shortcut:</strong> <code>ea1c 
+		<em>&lt;average BG&gt;</em></code></p>
+		<pre></pre>
+		<p>Estimates what the results of a glycated hemoglobin (HbA<sub>1C</sub>) test would be if the patient averaged a 
+		given blood sugar. As sugar circulates in the blood, it causes small changes to the hemoglobin in red blood cells. 
+		These changes can be detected and give a window into the amount of glucose present over the lifetime of the cells. 
+		For example, a consistent 154 mg/dL glucose (8.6 mmol/L) would produce an A1C of 7.0% (51 mmol/mol). Americans 
+		measure the percent of all hemoglobin that is glycated ("DCCT", named after a famous clinical trial, or "NGSP", 
+		a standards program set up to match measurements against DCCT), while Europeans measure the proportion of 
+		molecular weight ("IFCC", named after a chemistry body).</p>
+		<h2 id="estbg">estbg</h2>
+		<p><strong>Usage:</strong> <code>estbg <em>&lt;A1C result&gt; [</em>DCCT<em>|</em>IFCC<em>]</em></code><br><strong>
+		Shortcut:</strong> <code>eag <em>&lt;A1C result&gt; [</em>DCCT<em>|</em>IFCC<em>]</em></code><br><strong>Shortcut:
+		</strong> <code>ebg <em>&lt;A1C result&gt; [</em>DCCT<em>|</em>IFCC<em>]</em></code></p>
+		<pre></pre>
+		<p>Estimates what the average blood sugar over the past 60-90 days was for a patient with the given glycated 
+		hemoglobin (HbA<sub>1C</sub>) level.&nbsp; As sugar circulates in the blood, it causes small changes to the 
+		hemoglobin in red blood cells. These changes can be detected and give a window into the amount of glucose present
+		over the lifetime of the cells.For example, an A1C of 7.0% (51 mmol/L) reflects an average glucose of 154 mg/dL (8.6 
+		mmol/L). Americans measure the percent of all hemoglobin that is glycated ("DCCT", named after a famous clinical 
+		trial, or "NGSP", a standards program set up to match measurements against DCCT), while Europeans measure the 
+		proportion of molecular weight ("IFCC", named after a chemistry body). If diabot misinterprets the units (very 
+		rare), you can explicitly specify DCCT or IFCC units.</p>
+		<div class="alert alert-info inset"><span class="label label-info">Note</span> This estimation has a very large
+		margin of error. The test assumes a body with a normal volume of blood and a "normal" age mix of red blood cell ages.
+		Even if those conditions hold, there is still a lot of variability. For the example given, the 95% confidence range 
+		is as large as 32 mg/dL (1.8 mmol/L). It is not a replacement for regular blood glucose tests.</div>
+		<h2 id="bgoptin">bgoptin</h2>
+		<p><strong>Usage:</strong> <code>bgoptin <em>&lt;count&gt; {</em>days<em>|</em>entries<em>}</em></code></p>
+		<pre></pre>
+		<p>Normally diabot only retains the last 1,000 lines of chat history, and the blood sugar entries within it. 
+		Using this command tells it to store your blood sugar entries in a separate database, retaining them for the 
+		length of time you specify. You must specify a specific number of days or entries; once entries become older 
+		than this, they will be deleted the next time you add one or list them. This also enables saving tags, 
+		your BG entries following you if your nick changes (if you're registered and identified with diabot), 
+		and possibly other features in the future. <em>(This is separate from registering with NickServ, and separate from 
+		registering a diabot account.)</em> To remove all information stored with this command, use bgoptout.</p>
+		<div class="alert alert-warning inset"><span class="label label-warning">Privacy notice</span> While we follow 
+			industry standards for safeguarding the information stored in diabot, no security is perfect, and we are not 
+			responsible should the medical information you provide us become public knowledge. We operate this service 
+			for your convenience, but with no liability or warranty. If you do not want to take this risk, please do not 
+			opt in.</div>
+		<h2 id="bgoptout">bgoptout</h2>
+		<p><strong>Usage:</strong> <code>bgoptout</code></p>
+		<p>Removes all of your blood glucose readings and other information from the database. Only blood glucose 
+		readings in the chat history will be accessible after using this command.</p>
+		
+    </div> <!-- /container -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.subnav.js"></script>
+  </body>
+</html>
