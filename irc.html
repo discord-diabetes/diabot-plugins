@@ -15,24 +15,9 @@
     {
       padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
     }
-    
-    div.subnav:not(.subnav-fixed) ul.nav li:first-child
-    {
-      display:none;
-    }
-
-    pre, .inset
-    {
-      margin-left:4em;
-      margin-right:4em;
-    }
-
-    em em
-    {
-      font-style:normal;
-    }
     </style>
     <link href="css/bootstrap.subhead.css" rel="stylesheet" type="text/css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -184,7 +169,7 @@
         You can also go the other way, and see what A1C you'd get if you constantly had a certain blood sugar.
       </p>
       <p>
-        Once you've been chatting with us for a couple of days, you'll notice your `lastbgs results start disappearing.
+        Once you've been chatting with us for a couple of days, you'll notice your <code>`lastbgs</code> results start disappearing.
         This is normal for two reasons. Firstly, by default, it will only print out the last ten, so it doesn't
         overwhelm you or the channel with lots and lots of numbers. Secondly, unless you specify otherwise, diabot will
         only store results within the past 1,000 chat messages. This is for both efficiency and privacy concerns.
@@ -210,7 +195,7 @@
 </pre>
       <p>
         Finally, someone posted something that seems funny? Want diabot to remember it for future laughs later? Just
-        `grab it!
+        <code>`grab</code> it!
       </p>
       <pre>
  
@@ -337,7 +322,7 @@
         this, they will be deleted the next time you add one or list them. This also enables saving tags, your BG
         entries following you if your nick changes (if you're registered and identified with diabot), and possibly
         other features in the future. <em>(This is separate from registering with NickServ, and separate from
-        registering a diabot account.)</em> To remove all information stored with this command, use bgoptout.
+        registering a diabot account.)</em> To remove all information stored with this command, use <code>bgoptout</code>.
       </p>
       <div class="alert alert-warning inset">
         <span class="label label-warning">Privacy notice</span> While we follow industry standards for safeguarding the
@@ -355,10 +340,15 @@
         Removes all of your blood glucose readings and other information from the database. Only blood glucose readings
         in the chat history will be accessible after using this command.
       </p>
+			<p>
+        	&nbsp;</p>
     </div><!-- /container -->
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js" type="text/javascript">
+    </script><script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.20/jquery-ui.min.js" type="text/javascript">
 </script><script src="js/bootstrap.min.js" type="text/javascript">
 </script><script src="js/bootstrap.subnav.js" type="text/javascript">
+</script>
+<script src="js/scrollback.js" type="text/javascript">
 </script>
   </body>
 </html>

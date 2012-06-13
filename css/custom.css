@@ -1,0 +1,19 @@
+﻿    div.subnav:not(.subnav-fixed) ul.nav li:first-child
+    {
+      display:none;
+    }
+
+    pre, .inset
+    {
+      margin-left:4em;
+      margin-right:4em;
+    }
+
+    em em
+    {
+      font-style:normal;
+    }
+    .target
+    {
+      color: #468847
+    }
