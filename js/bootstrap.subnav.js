@@ -13,10 +13,10 @@
       if (scrollTop >= navTop && !isFixed) {
         isFixed = 1
         $nav.addClass('subnav-fixed')
-         document.body.style.paddingTop = "110px"
+         $(document.body).addClass('body-subnav-fixed')
       } else if (scrollTop <= navTop && isFixed) {
         isFixed = 0
         $nav.removeClass('subnav-fixed')
-        document.body.style.paddingTop = "60px"
+         $(document.body).removeClass('body-subnav-fixed')
       }
     }
