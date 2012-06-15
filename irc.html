@@ -247,7 +247,7 @@
 		  <h2 id="disclaimer">disclaimer</h2>
        <p><strong>Usage:</strong> <code>disclaimer</code></p>
 <pre>[02:03:01] &lt;oh_bother&gt; 'disclaimer
-[02:03:02] &lt;@diabot&gt; Remember: none of us are medical professionals in any way, consult your physician or healthcare provider when in doubt</pre>    <div class="alert alert-error">
+[02:03:02] &lt;@diabot&gt; Remember: none of us are medical professionals in any way, consult your physician or healthcare provider when in doubt</pre>    <div class="alert alert-error inset">
       <span class="label label-important">Disclaimer</span> This FAQ is written by a large group of people with years
       of personal experience with their respective conditions. Nevertheless, none of us are doctors, and this should
       not be construed as medical advice. If you're looking for medical advice, please contact a physician or
@@ -260,7 +260,7 @@
 		  <p><strong>Usage:</strong> <code>register <em>&lt;username&gt; &lt;password&gt;</em></code><br>
     <strong>Usage:</strong> <code>identify <em>&lt;username&gt; &lt;password&gt;</em></code><br>
     <strong>Usage:</strong> <code>hostmask add <em>&lt;nick&gt;</em>!<em>&lt;ident&gt;</em>@<em>&lt;example.org&gt;</em></code></p>
-        <div class="alert alert-info">
+        <div class="alert alert-info inset">
       <span class="label label-info">Note</span> These commands must be sent privately to the bot, because they include 
 				a password. Also, this is different from <a href="#nickserv">identifying to NickServ</a> and 
 				<a href="#bgoptin">opting in</a> to data collection.</div>
@@ -313,7 +313,7 @@
     <h2 id="roulette">roulette</h2>
 		  <p><strong>Usage:</strong> <code>roulette <em>[</em>spin<em>]</em></code></p>
 		  <pre>
-		  
+
 </pre>
 		  <p>A simple Russian Roulette-esque game. When it starts up, diabot puts a "bullet" in one of six "barrels", 
 		  and "spins" them around. A random number from zero to five people can run <code>roulette</code> without ill effects. 
@@ -321,14 +321,55 @@
 		  inserted and the game restarts. You can also manually "spin" the barrels to reset your chances. Do you feel 
 		  lucky? Well, <em>do you?</em></p>
     <h2><span id="flair">flair</span>, <span id="setflair">setflair</span></h2>
+		  <p>
+<strong>Usage:</strong> <code>flair <em>&lt;nickname&gt;</em></code><br>
+    <strong>Usage:</strong> <code>setflair <em>&lt;statement&gt;</em></code></p>
+		  		  <pre>
+[13:26:50] *** whome` has joined #reddit-diabetes
+[13:26:50] &lt;@diabot&gt; t2 novolog/levemir
+</pre>
+<p>&nbsp;</p>
     <h2><span id="dict">dict</span>, <span id="wiki">wiki</span>, <span id="ud">ud</span>, <span id=
     "google">google</span>, <span id="lucky">lucky</span></h2>
-		  <h2 id="weather">weather</h2><!--<h2>
+		  <p><strong>Usage:</strong> <code>dict <em>&lt;term&gt;</em></code><br>
+<strong>Usage:</strong> <code>wiki <em>&lt;thing&gt;</em></code><br>
+<strong>Usage:</strong> <code>ud <em>&lt;slang&gt;</em></code><br>
+    <strong>Usage:</strong> <code>google <em>&lt;search&gt;</em></code><br><strong>Usage:</strong> <code>
+lucky <em>&lt;search&gt;</em></code></p>
+    <pre>[11:50:20] &lt;awaxa&gt; `wiki SIG Sauer GSR
+[11:50:21] &lt;@diabot&gt; awaxa: http://en.wikipedia.org/w/index.php?title=SIG_Sauer_GSR&amp;oldid=474546251
+[11:50:22] &lt;@diabot&gt; awaxa: The SIG Sauer GSR "Granite Series Rail" pistol is a stainless steel frame and slide M1911 clone produced by SIG Sauer. 
+	The SIG Granite Series was awarded the 2004 Handgun of the Year Award by the Shooting Industry Academy of Excellence. It is entirely made 
+	in the USA, from American parts.</pre>
+<!--<pre>[01:36:17] &lt;Ariensus&gt; `grand
+[01:36:17] &lt;@diabot&gt; Ariensus: &lt;awaxa&gt; tmi? fuck you we all poop
+[01:36:22] &lt;Ariensus&gt; Lawl
+[01:36:28] &lt;Ariensus&gt; `grand
+[01:36:28] &lt;@diabot&gt; Ariensus: &lt;voxparse&gt; Sneakyphil, Master of Subtlety
+[01:36:33] &lt;Ariensus&gt; `grand
+[01:36:33] &lt;@diabot&gt; Ariensus: &lt;gwash&gt; I like tits n drugs
+[01:36:43] &lt;Ariensus&gt; `grand daktaklakpak
+[01:36:43] &lt;@diabot&gt; Ariensus: &lt;daktaklakpak&gt; lol yea I got grabbed earlier and was like... "Uhhhh....."
+        until diabot said something about the operation succeeded
+[01:36:59] &lt;Ariensus&gt; `grand daktaklakpak_
+[01:36:59] &lt;@diabot&gt; Ariensus: &lt;daktaklakpak_&gt; I played wheelchair basketball as a kid in middle school, I felt like Benhur (sp?)
+[01:37:12] &lt;TwelveBaud&gt; `grand Bunnii1
+[01:37:12] &lt;@diabot&gt; TwelveBaud: &lt;Bunnii1&gt; why does awesome sex always end abruptly with me being super low</pre>-->
+		  <p>&nbsp;</p>
+		  <h2 id="weather">weather</h2><p>
+<strong>Usage:</strong> <code>weather <em>&lt;location&gt;</em></code></p>
+		  		  <pre>
+[15:42:25] &lt;ComputerCarl&gt; 'weather 90210
+[15:42:26] &lt;@diabot&gt; ComputerCarl: Current weather for Beverly Hills, CA | Temperature: 66°F / 19°C; Humidity: 65%; 
+	Pressure: 29.88in / 101.2kPa; Conditions: Overcast; Wind: Variable, 5mph / 8kph; Updated: 51 mins, 19 secs ago
+</pre>
+<p>&nbsp;</p>
+<!--<h2>
                 say, tell, later</h2>-->
     <h1 id="irccmds">IRC commands</h1>
-    <h4 id="nickserv">Identifying to NickServ</h4>
-    <h4 id="joinpart">Joining and parting channels</h4>
-    <h4 id="msg">Sending private messages</h4>
+    <h3 id="nickserv">Identifying to NickServ</h3>
+    <h3 id="joinpart">Joining and parting channels</h3>
+    <h3 id="msg">Sending private messages</h3>
   </div><!-- /container -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js" type="text/javascript">
 </script><script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.20/jquery-ui.min.js" type="text/javascript">
