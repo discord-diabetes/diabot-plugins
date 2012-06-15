@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
     -->
-</head>
+  </head>
 <body>
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
@@ -246,8 +246,8 @@
     in the chat history will be accessible after using this command.</p>
 		  <h2 id="disclaimer">disclaimer</h2>
        <p><strong>Usage:</strong> <code>disclaimer</code></p>
-<pre>[00:08:40] &lt;oh_bother&gt; 'DISCLAIMER!
-[00:08:40] &lt;@diabot&gt; REMEMBER: NONE OF US ARE MEDICAL PROFESSIONALS IN ANY WAY, CONSULT YOUR PHYSICIAN OR HEALTHCARE PROVIDER WHEN IN DOUBT !!!!!!!!!!</pre>    <div class="alert alert-error">
+<pre>[02:03:01] &lt;oh_bother&gt; 'disclaimer
+[02:03:02] &lt;@diabot&gt; Remember: none of us are medical professionals in any way, consult your physician or healthcare provider when in doubt</pre>    <div class="alert alert-error">
       <span class="label label-important">Disclaimer</span> This FAQ is written by a large group of people with years
       of personal experience with their respective conditions. Nevertheless, none of us are doctors, and this should
       not be construed as medical advice. If you're looking for medical advice, please contact a physician or
@@ -256,9 +256,10 @@
 
  <h1 id="othercmds">Other useful commands</h1>
     <p>These commands are not specific to diabetes, but they're amusing and you'll see them pretty often.</p>
-    <h2><span id="register">register</span>, <span id="identify">identify</span></h2>
+    <h2><span id="register">register</span>, <span id="identify">identify</span>, <span id="hostmask">hostmask</span></h2>
 		  <p><strong>Usage:</strong> <code>register <em>&lt;username&gt; &lt;password&gt;</em></code><br>
-    <strong>Usage:</strong> <code>identify <em>&lt;username&gt; &lt;password&gt;</em></code></p>
+    <strong>Usage:</strong> <code>identify <em>&lt;username&gt; &lt;password&gt;</em></code><br>
+    <strong>Usage:</strong> <code>hostmask add <em>&lt;nick&gt;</em>!<em>&lt;ident&gt;</em>@<em>&lt;example.org&gt;</em></code></p>
         <div class="alert alert-info">
       <span class="label label-info">Note</span> These commands must be sent privately to the bot, because they include 
 				a password. Also, this is different from <a href="#nickserv">identifying to NickServ</a> and 
@@ -271,7 +272,13 @@
 		  set a hostmask, lets your BG information follow nickname changes. It also allows awaxa to consider you for 
 		  additional privileges. However, it is not compulsary, and most members of the channel aren't registered there. 
 		  Once you've registered, you can identify yourself to have access to these features.</p>
-    <h2><span id="grab">grab</span>, <span id="grand">grand</span></h2>
+		  <p>You can also use hostmasks as a way to automatically log you in, so you don't need to identify yourself. 
+		  Unfortunately, discussing them in depth is beyond the scope of this article, but here is one example:</p>
+		  <pre style="background-color:bisque">[16:53:58] &lt;TwelveBaud&gt; hostmask add TwelveB*!~jester@*.washdc.fios.verizon.net
+[16:53:58] &lt;diabot&gt; The operation succeeded.</pre>
+		  <p>This means anyone with a nickname beginning with "TwelveB", logged into their local computer as "jester", 
+		  and connecting from a Washington DC FiOS connection will automatically be identified as "TwelveBaud". You can 
+		  get this information by running <code>/whois</code> on yourself.</p>    <h2><span id="grab">grab</span>, <span id="grand">grand</span></h2>
 		  <p><strong>Usage:</strong> <code>grab <em>&lt;nickname&gt;</em></code><br>
 <strong>Usage:</strong> <code>ungrab</code><br>
 <strong>Usage:</strong> <code>glast <em>&lt;nickname&gt;</em></code><br>
