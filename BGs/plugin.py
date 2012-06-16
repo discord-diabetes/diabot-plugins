@@ -122,15 +122,16 @@ class BGDB_SQLite(object):
 		self.db.commit()
 		if tags:
 			for t in tags:
-				cursor.execute("INSERT INTO tags(bgid, tag) VALUES((SELECT bgid FROM bgs "
-					"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? "
-					"ORDER BY ts DESC LIMIT 1), ?)", [nick, t])
+				cursor.execute("INSERT INTO tags(bgid, tag) VALUES((SELECT bgid FROM bgs " \
+					"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? " \
+					"ORDER BY ts DESC LIMIT 1), ?)", [nick, \
+					t.translate(string.maketrans("",""), string.punctuation)])
 			self.db.commit()
 	
 	def oopsbg(self, nick):
 		cursor = self.db.cursor()
-		cursor.execute("DELETE FROM bgs WHERE bgid IN "
-			"(SELECT bgid FROM bgs INNER JOIN users ON bgs.uid = users.uid "
+		cursor.execute("DELETE FROM bgs WHERE bgid IN " \
+			"(SELECT bgid FROM bgs INNER JOIN users ON bgs.uid = users.uid " \
 			"WHERE nick = ? ORDER BY ts DESC LIMIT 1)", [nick])
 		self.db.commit()
 	
@@ -138,7 +139,7 @@ class BGDB_SQLite(object):
 		if not count:
 			count = 5
 		cursor = self.db.cursor()
-		cursor.execute("SELECT bgid, test, ts FROM bgs "
+		cursor.execute("SELECT bgid, test, ts FROM bgs " \
 			"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? ORDER BY ts DESC", [nick])
 		rawreslist = cursor.fetchall()
 		reslist = []
@@ -166,14 +167,14 @@ class BGDB_SQLite(object):
 		cursor.execute("SELECT * FROM users WHERE nick = ?", [nick])
 		user = cursor.fetchone()
 		if user[5] == 1: #days
-			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) "
+			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) " \
 				"AND ts < ?", [nick, dumbtime.time() - 86400 * user[4]])
 		elif user[5] == 2: #entries
-			cursor.execute("DELETE FROM bgs WHERE bgid NOT IN (SELECT bgid FROM bgs "
-				"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? "
+			cursor.execute("DELETE FROM bgs WHERE bgid NOT IN (SELECT bgid FROM bgs " \
+				"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? " \
 				"ORDER BY ts DESC LIMIT ?)", [nick, user[4]])
 		else: #something I've never seen before
-			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) "
+			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) " \
 				"AND ts < ?", [nick, dumbtime.time() - 86400 * 7]) #make it 7 days by default
 		self.db.commit()
 	
@@ -415,7 +416,7 @@ class BGs(callbacks.Plugin):
 				self.db.addbg(self._getNick(msg), m.tagged('bg'), [], m.tagged('receivedAt'))
 		self.db.pruneuser(self._getNick(msg))
 		irc.replySuccess()
-	bgoptin = wrap(bgoptin, ['int', ('literal', ('days','entries'), 
+	bgoptin = wrap(bgoptin, ['int', ('literal', ('days','entries'), \
 		'You must specify a certain number of days or entries. No exceptions.')])
 	
 	def bgoptout(self, irc, msg, args):
