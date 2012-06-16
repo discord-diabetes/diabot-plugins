@@ -431,7 +431,12 @@ class BGs(callbacks.Plugin):
 		irc.replySuccess()
 	bgoptout = wrap(bgoptout)
 	
-	
+	def avg(self, irc, msg, args, count, unit):
+		"""<count> [days|weeks]
+		
+		Gets a weighted average of your reported blood glucose over the requested time period.
+		"""
+		pass
 	
 	def _getNick(self, msg):
 		try:
