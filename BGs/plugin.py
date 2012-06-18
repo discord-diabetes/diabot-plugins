@@ -39,6 +39,7 @@ import supybot.plugins as plugins
 import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 import supybot.ircdb as ircdb
+import string
 
 
 class BGDB_SQLite(object):
