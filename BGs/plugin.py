@@ -173,7 +173,8 @@ class BGDB_SQLite(object):
 		elif user[5] == 2: #entries
 			cursor.execute("DELETE FROM bgs WHERE bgid NOT IN (SELECT bgid FROM bgs " \
 				"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? " \
-				"ORDER BY ts DESC LIMIT ?)", [nick, user[4]])
+				"ORDER BY ts DESC LIMIT ?) AND uid = (SELECT uid FROM users WHERE nick = ?)",
+				[nick, user[4], nick])
 		else: #something I've never seen before
 			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) " \
 				"AND ts < ?", [nick, dumbtime.time() - 86400 * 7]) #make it 7 days by default
