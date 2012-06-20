@@ -1,5 +1,5 @@
 ###
-# Copyright (c) 2012, Andrew Cook, Halley Jacobs, Greg Kitson
+# Copyright (c) 2012, Andrew Cook, Halley Jacobs, Greg Kitson, Sundil Pedapudi
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ import supybot.ircutils as ircutils
 import supybot.callbacks as callbacks
 import supybot.ircdb as ircdb
 import string
-
+import math
 
 class BGDB_SQLite(object):
 	
@@ -323,6 +323,123 @@ class BGs(callbacks.Plugin):
 			f.append(s)
 		irc.reply(utils.str.commaAndify(f))
 	
+	def avg(self, irc, msg, args, count, unit, tags):
+		"""<count> [days|weeks]
+		
+		Gets a weighted average of your reported blood glucose over the requested time period.
+		"""
+		if not self.db.isruser(self._getNick(msg)):
+			self._Uavg(irc, msg, args, count, unit)
+		else:
+			self._Ravg(irc, msg, args, count, unit, tags)
+	avg = wrap(avg, [optional(int), optional(('literal', ('days', 'weeks'))), any('lower')])
+	
+	def _Uavg(self, irc, msg, args, count, unit):
+		r = []
+		h = reversed(irc.state.history)
+		for m in h:
+			if m.nick.lower() == msg.nick.lower() and m.tagged('bg'):
+				r.append(m)
+		if len(r) == 0:
+			irc.reply("Sorry, no BGs on file.")
+			return
+		ocount = count
+		if unit == 'weeks':
+			count *= 7
+		count *= 86400
+		pool = [(m.tagged('bg'), m.tagged('receivedAt')) for m in r \
+			if m.tagged('receivedAt') > dumbtime.time() - count]
+		
+		#Simple average
+		#avg = sum([b[0] for b in pool])/len(pool)
+		
+		#Time-weighted average
+		#whsum = 0
+		#bgsum = 0
+		#for i in range(len(pool)):
+		#	if i==0:
+		#		bweight = pool[i][1] - (dumbtime.time() - count)
+		#	else:
+		#		bweight = (pool[i][1] - pool[i-1][1])/2
+		#	if i==len(pool)-2:
+		#		fweight = dumbtime.time() - pool[i][1]
+		#	else:
+		#		fweight = (pool[i+1][1] - pool[i][1])/2
+		#	weight = bweight+fweight
+		#	whsum += weight
+		#	bgsum += pool[i][0]*weight
+		#avg = bgsum/whsum
+		
+		#plugnplay's "camera-flash"-weighted average
+		whsum = 0
+		bgsum = 0
+		for i in range(len(pool)):
+			if i==0:
+				weight = 1
+			else:
+				weight = 1 - math.e**(-((pool[i][1]-pool[i-1][1])**2)/(2*(3.33*60)**2))
+			whsum += weight
+			bgsum += pool[i][0]*weight
+		avg = bgsum/whsum
+		
+		#end averages
+		
+		mmode = avg > self.registryValue('measurementTransitionValue')
+		irc.reply("%d-%s average: %s" % (ocount, unit, ("{0:.1f} mmol/L", "{0:.0f} mg/dL")[mmode].format(avg)))
+
+	def _Ravg(self, irc, msg, args, count, unit, tags):
+		self.db.pruneuser(self._getNick(msg))
+		r = self.db.getbgs(self._getNick(msg), 'all', tags)
+		if len(r) == 0:
+			if tags:
+				irc.reply("Sorry, no BGs with all those tags on file.")
+			else:
+				irc.reply("Sorry, no BGs on file.")
+			return
+		pool = [(m['test'], m['timestamp']) for m in r if m['timestamp'] > dumbtime.time() - count ]
+		
+			
+		#Simple average
+		#avg = sum([b[0] for b in pool])/len(pool)
+		
+		#Time-weighted average
+		#whsum = 0
+		#bgsum = 0
+		#for i in range(len(pool)):
+		#	if i==0:
+		#		bweight = pool[i][1] - (dumbtime.time() - count)
+		#	else:
+		#		bweight = (pool[i][1] - pool[i-1][1])/2
+		#	if i==len(pool)-2:
+		#		fweight = dumbtime.time() - pool[i][1]
+		#	else:
+		#		fweight = (pool[i+1][1] - pool[i][1])/2
+		#	weight = bweight+fweight
+		#	whsum += weight
+		#	bgsum += pool[i][0]*weight
+		#avg = bgsum/whsum
+		
+		#plugnplay's "camera-flash"-weighted average
+		whsum = 0
+		bgsum = 0
+		for i in range(len(pool)):
+			if i==0:
+				weight = 1
+			else:
+				weight = 1 - math.e**(-((pool[i][1]-pool[i-1][1])**2)/(2*(3.33*60)**2))
+			whsum += weight
+			bgsum += pool[i][0]*weight
+		avg = bgsum/whsum
+		
+		#end averages
+		
+		mmode = self.db.getmeter(self._getNick(msg))
+		if mmode:
+			mmode -= 1
+		else:
+			mmode = avg > self.registryValue('measurementTransitionValue')		
+		irc.reply("%d-%s average: %s" % (ocount, unit, ("{0:.1f} mmol/L", "{0:.0f} mg/dL")[mmode].format(avg)))
+	
 	def bgoops(self, irc, msg, args):
 		"""
 		
@@ -433,14 +550,6 @@ class BGs(callbacks.Plugin):
 		self.db.deluser(self._getNick(msg))
 		irc.replySuccess()
 	bgoptout = wrap(bgoptout)
-	
-	def avg(self, irc, msg, args, count, unit, tags):
-		"""<count> [days|weeks]
-		
-		Gets a weighted average of your reported blood glucose over the requested time period.
-		"""
-		pass
-	avg = wrap(avg, [optional([int, ('literal', ('days', 'weeks'))]), any('lower')])
 	
 	def _getNick(self, msg):
 		try:
