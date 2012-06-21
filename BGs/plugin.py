@@ -220,9 +220,9 @@ class BGs(callbacks.Plugin):
 	def _Ubg(self, irc, msg, args, testlvl):
 		msg.tag('bg', testlvl) #to make it easier to find in lastbgs
 		if testlvl <= self.registryValue('measurementTransitionValue'):
-			irc.reply("{0:.1f} mmol/L = {1:.0f} mg/dL".format(testlvl, testlvl * 18.0182))
+                        irc.reply(''.join([ircutils.bold("{0:.1f}".format(testlvl))," mmol/L = ",ircutils.bold("{0:.0f}".format(testlvl * 18.0182))," mg/dL"]))
 		else:
-			irc.reply("{0:.0f} mg/dL = {1:.1f} mmol/L".format(testlvl, testlvl / 18.0182))
+                        irc.reply(''.join([ircutils.bold("{0:.0f}".format(testlvl))," mg/dL = ",ircutils.bold("{0:.1f}".format(testlvl / 18.0182))," mmol/L"]))
 	
 	def _Rbg(self, irc, msg, args, testlvl, tags):
 		msg.tag('bg', testlvl) #in case of an opt-out later
@@ -236,9 +236,9 @@ class BGs(callbacks.Plugin):
 				meter = 1
 			self.db.setmeter(self._getNick(msg), meter)
 		if meter == 2:
-			irc.reply("{0:.1f} mmol/L = {1:.0f} mg/dL".format(testlvl, testlvl * 18.0182))
+                        irc.reply(''.join([ircutils.bold("{0:.1f}".format(testlvl))," mmol/L = ",ircutils.bold("{0:.0f}".format(testlvl * 18.0182))," mg/dL"]))
 		else:
-			irc.reply("{0:.0f} mg/dL = {1:.1f} mmol/L".format(testlvl, testlvl / 18.0182))
+                        irc.reply(''.join([ircutils.bold("{0:.0f}".format(testlvl))," mg/dL = ",ircutils.bold("{0:.1f}".format(testlvl / 18.0182))," mmol/L"]))
 	
 	def last(self, irc, msg, args, count, tags):
 		"""[<result count>] [<tag> ...]
