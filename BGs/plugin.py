@@ -280,9 +280,9 @@ class BGs(callbacks.Plugin):
 			else:
 				s += dat.strftime("[%H:%M] ")
 			if m.tagged('bg') <= self.registryValue('measurementTransitionValue'):
-				s += "{0:.1f}".format(m.tagged('bg'))
+				s += ircutils.bold("{0:.1f}".format(m.tagged('bg')))
 			else:
-				s += "{0:.0f}".format(m.tagged('bg'))
+				s += ircutils.bold("{0:.0f}".format(m.tagged('bg')))
 			f.append(s)
 		irc.reply(utils.str.commaAndify(f))
 		
@@ -311,13 +311,13 @@ class BGs(callbacks.Plugin):
 			else:
 				s += dat.strftime("[%H:%M] ")
 			if met == 2:
-				s += "{0:.1f}".format(m['test'])
+				s += ircutils.bold("{0:.1f}".format(m['test']))
 			elif met == 1:
-				s += "{0:.0f}".format(m['test'])
+				s += ircutils.bold("{0:.0f}".format(m['test']))
 			elif m['test'] <= self.registryValue('measurementTransitionValue'):
-				s += "{0:.1f}".format(m['test'])
+				s += ircutils.bold("{0:.1f}".format(m['test']))
 			else:
-				s += "{0:.0f}".format(m['test'])
+				s += ircutils.bold("{0:.0f}".format(m['test']))
 			if len(m['tags']) > 0:
 				s += " (" + reduce(_implode, m['tags']) + ")"
 			f.append(s)
