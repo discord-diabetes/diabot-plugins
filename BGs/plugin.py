@@ -116,7 +116,7 @@ class BGDB_SQLite(object):
 		self.db.commit()
 	
 	def addbg(self, nick, test, tags, ts = None):
-		if not ts: ts = dumbtime.mktime(datetime.utcnow().timetuple())
+		if not ts: ts = dumbtime.time()
 		cursor = self.db.cursor()
 		cursor.execute("INSERT INTO bgs(uid, test, ts) VALUES((SELECT uid FROM users WHERE nick = ?), ?, ?)",
 			[nick, test, ts])
@@ -169,7 +169,7 @@ class BGDB_SQLite(object):
 		user = cursor.fetchone()
 		if user[5] == 1: #days
 			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) " \
-				"AND ts < ?", [nick, dumbtime.mktime(datetime.utcnow().timetuple()) - 86400 * user[4]])
+				"AND ts < ?", [nick, dumbtime.time() - 86400 * user[4]])
 		elif user[5] == 2: #entries
 			cursor.execute("DELETE FROM bgs WHERE bgid NOT IN (SELECT bgid FROM bgs " \
 				"INNER JOIN users ON bgs.uid = users.uid WHERE nick = ? " \
@@ -177,7 +177,7 @@ class BGDB_SQLite(object):
 				[nick, user[4], nick])
 		else: #something I've never seen before
 			cursor.execute("DELETE FROM bgs WHERE uid IN (SELECT uid FROM users WHERE nick = ?) " \
-				"AND ts < ?", [nick, dumbtime.mktime(datetime.utcnow().timetuple()) - 86400 * 7]) #make it 7 days by default
+				"AND ts < ?", [nick, dumbtime.time() - 86400 * 7]) #make it 7 days by default
 		self.db.commit()
 	
 	def pruneall(self):
@@ -271,7 +271,7 @@ class BGs(callbacks.Plugin):
 		f = []
 		for m in r:
 			s = ""
-			now = datetime.utcnow()
+			now = datetime.now()
 			dat = datetime.fromtimestamp(m.tagged('receivedAt'))
 			if now - dat > timedelta(7):
 				s += dat.strftime("[%b %d %H:%M] ")
@@ -303,15 +303,15 @@ class BGs(callbacks.Plugin):
 		for m in r:
 			s = ""
 			now = datetime.utcnow()
-			dat = datetime.fromtimestamp(m['timestamp'])
-			offset = pytz.timezone(m['tz']).utcoffset(datetime.utcnow())
-			dat = dat + offset
+			dat = datetime.utcfromtimestamp(m['timestamp'])
+			tz = pytz.timezone(m['tz'])
+			localdate = tz.fromutc(dat)
 			if now - dat > timedelta(7):
-				s += dat.strftime("[%b %d %H:%M] ")
+				s += localdate.strftime("[%b %d %H:%M] ")
 			elif now - dat > timedelta(1):
-				s += dat.strftime("[%a %H:%M] ")
+				s += localdate.strftime("[%a %H:%M] ")
 			else:
-				s += dat.strftime("[%H:%M] ")
+				s += localdate.strftime("[%H:%M] ")
 			if met == 2:
 				s += ircutils.bold("{0:.1f}".format(m['test']))
 			elif met == 1:
