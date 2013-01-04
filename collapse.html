@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Diabetes FAQ: Welcome to IRC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content=""><!-- Le styles -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/bootstrap.subhead.css" rel="stylesheet" type="text/css">
+  <link href="css/custom.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <!-- Le fav and touch icons -->
+  <!--
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+ </head>
+
+ <h1>Diabetes-Related Diabot Commands</h1> 
+ <div class="bs-docs-example">
+              <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  <h2 id="bg">bg</h2>
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                 <p><strong>Usage:</strong> <code>bg <em>&lt;test result&gt; [tag ...]</em></code><br>
+    <strong>Shortcut:</strong> <code><em>&lt;test result&gt;</em></code></p>
+    <pre>
+[22:04:17] &lt;Ariensus&gt; 100
+[22:04:17] &lt;@diabot&gt; Ariensus: 100 mg/dL = 5.5 mmol/L
+</pre>
+    <p>Stores your blood sugar so it can be recalled later with lastbgs. It also prints a conversion from milligrams
+    per decileter, used in the United States, to millimoles per liter, used in Europe, or the corresponding reverse
+    conversion. If you've <a href="#bgoptin">opted in</a> to extended collection, you can also add a list of tag words, such as &quot;post
+    breakfast&quot; or &quot;pizzanight&quot; which will be stored with the entry. (You must use the long form of the
+    command, and their order will not be preserved.) Entries will be stored for 1,000 chat messages, or for however
+    long you specified when opting in.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                      <h2 id="lastbgs">lastbgs</h2>
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>lastbgs <em>[count] [tag ...]</em></code></p>
+    <pre>
+ 
+</pre>
+    <p>Prints out your last several blood sugar readings. You can specify how many you want to include; by default,
+    only up to ten are displayed. If you've<a href="#bgoptin"> opted in</a> to extended collection, you can also add a list of tag words
+    (such as &quot;post breakfast&quot; or &quot;pizzanight&quot;), and only entries with all of those tag words will
+    be displayed. The entries are displayed in the following format: <code>[time] BG (tag ...)</code>. If the entry is
+    less than 24 hours old, only the time will be shown; if the entry is less than 7 days old, the weekday and time
+    will be shown; otherwise the month, day, and time will be shown. All entries are shown in US Eastern Standard Time
+    (GMT-5) or Eastern Daylight Time (GMT-4).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                      <h2 id="bgoops">bgoops</h2>
+                    </a>
+                  </div>
+                  <div id="collapseThree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>bgoops</code></p>
+    <pre>
+[11:36:48] &lt;awaxa&gt; 297
+[11:36:48] &lt;@diabot&gt; awaxa: 297 mg/dL = 16.5 mmol/L
+[11:36:52] &lt;awaxa&gt; `bgoops
+[22:36:52] &lt;@diabot&gt; awaxa: The operation succeeded.
+[22:36:56] &lt;awaxa&gt; 207
+[22:36:56] &lt;@diabot&gt; awaxa: 207 mg/dL = 11.5 mmol/L</pre>
+
+    <p>Removes your last blood sugar entry. Useful if you have made a mistake or something has been misinterpreted as a
+    blood sugar.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
