@@ -45,12 +45,16 @@
       not be construed as medical advice. If you're looking for medical advice, please contact a physician or
       endocrinologist. Thank you, and be safe.
     </div>
-    <h1 id="welcome">Welcome to IRC</h1>
+    <h1 align="center"id="welcome">Welcome to the /r/Diabetes IRC!</h1>
+    
     <p>A lot of members of the /r/diabetes reddit hang out on IRC, or Internet Relay Chat. You can find us on the
     <a href="http://www.freenode.net/">Freenode</a> network, in the #reddit-diabetes channel. You can <a href=
     "irc://chat.freenode.net/reddit-diabetes">add it to your IRC client</a>, or <a href=
     "http://webchat.freenode.net/?channels=%23reddit-diabetes">connect using your web browser</a>. There's almost
     always someone awake, and if you're on Google+ you can join our video hangouts as well.</p>
+    
+   
+    </p>
     <p><em>To issue a diabot command, /msg it to the bot or include an accent (` or ') in front of it. To jump
     directly to the documentation for a diabot command, just click it in this list:</em></p>
     <div class="subnav">
@@ -67,7 +71,12 @@
         <li><a href="#othercmds">Other useful commands</a></li>
       </ul>
     </div>
+    <h1>Joining IRC</h1>
+    <p>First time on any Freenode IRC channel? If you want to reserve your username and be recognized by fellow members of the channel, you'll need to <a href="http://freenode.net/faq.shtml#nicksetup">register your nick with Freenode</a>.
+   </p>
+  
     <h1>Your first visit</h1>
+    
     <p>So you've decided to come visit the IRC channel. Welcome! When you join, you're probably going to see
     something like this:</p>
     <pre>
@@ -82,10 +91,8 @@
 [21:15:37] &lt;oh_bother&gt; clearly you have not seen the tutus to which I refer
 [21:15:41] &lt;greenconverse&gt; clearly
 </pre>
-    <p>Diabetics are people too, and we talk about anything that's on our mind, not just diabetes. Diabetes
-    conversations always come first, but feel free to join in about whatever you like; we're all in this
-    together.</p>
-    <p>Soon, someone will type in a number and immediately get a reply:</p>
+    <p>We tend to talk about anything that's on our mind. If you want to talk about something diabetes-related, just speak up. We'll be glad to talk about it with you.</p>
+    <p>Eventually, you'll see someone type in a number or command and immediately get a reply:</p>
     <pre>
 [22:01:40] &lt;toystoriegirl&gt; 182
 [22:01:40] &lt;@diabot&gt; toystoriegirl: 182 mg/dL = 10.1 mmol/L
@@ -94,17 +101,17 @@
     it's <a href="#bg">translating blood sugars</a> from one set of units to the other. Since Americans and Europeans use different
     units to track blood sugar, this helps us keep everyone on the same page. Posting your blood sugar to the channel
     helps you remember it better, and don't worry: we are not judgemental, and most of us have had bad days before.
-    Try it and see.</p>
+    Try it out.</p>
     <p>After you've been participating in the discussion for a while, you might want to see how well you're
     doing. Diabot has you covered there as well. Type in <code>`lastbgs</code>, and it'll <a href="#lastbgs">reply with the past few
     entries</a>:</p>
     <pre>
- 
-</pre>
+[00:12:02] &lt;trippingbackward&gt; 'lastbgs
+[00:12:02] &lt;diabot&gt; trippingbackward: [11:01] 204, [02:58] 107, and [4:42] 78 </pre>
     <p>This is a good way to see how your blood sugar changes over time. Wait a minute... Someone asked you your age,
     and diabot thought it was a blood sugar? <a href="#bgoops">Oops</a>! That's going to throw things off a bit. Let's fix that:</p>
     <pre>
- [00:00:02] &lt;daffyd-type1&gt; lol i am 47 lolz cheer up LOlz
+[00:00:02] &lt;daffyd-type1&gt; lol i am 47 lolz cheer up LOlz
 [00:00:26] &lt;oh_bother&gt; fffffuuuuu
 [00:00:31] &lt;oh_bother&gt; 28
 [00:00:31] &lt;@diabot&gt; oh_bother: 28.0 mmol/L = 505 mg/dL
@@ -139,8 +146,8 @@
     like &quot;post breakfast&quot; or &quot;pizza&quot;, and they'll be shown in the list and can be used as a
     filter:</p>
     <pre>
- 
-</pre>
+[00:00:02] &lt;Ariensus&gt; 'bg 127 after dinner
+[00:00:26] &lt;diabot&gt; Ariensus: 127 mg/dL = 7.0 mmol/L</pre>
     <p>Finally, someone posted something that seems funny? Want diabot to remember it for future laughs later? Just
     <code><a href="#grab">`grab</a></code> it!</p>
     <pre>
@@ -148,51 +155,106 @@
 </pre>
     <p>This isn't everthing diabot can do, but hopefully you'll feel right at home.</p>
     <h1>Command reference</h1>
-    <p><em>As a reminder, commands you send to the channel <em>must</em> begin with a ` or a ', while commands sent
+    <p><em>As a reminder, commands you send to the channel <em>must</em> begin with <code>`</code>  or <code>'</code> , while commands sent
     privately to the bot <em>must not</em> have anything in front.</em></p>
-    <h2 id="bg">bg</h2>
-    <p><strong>Usage:</strong> <code>bg <em>&lt;test result&gt; [tag ...]</em></code><br>
-    <strong>Shortcut:</strong> <code><em>&lt;test result&gt;</em></code></p>
-    <pre>
+<div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                      <h2 id="bg">bg</h2>
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>bg <em>&lt;test result&gt; [tag ...]</em></code><br>
+			<strong>Shortcut:</strong> <code><em>&lt;test result&gt;</em></code></p>
+				<pre>
 [22:04:17] &lt;Ariensus&gt; 100
-[22:04:17] &lt;@diabot&gt; Ariensus: 100 mg/dL = 5.5 mmol/L
-</pre>
-    <p>Stores your blood sugar so it can be recalled later with lastbgs. It also prints a conversion from milligrams
-    per decileter, used in the United States, to millimoles per liter, used in Europe, or the corresponding reverse
-    conversion. If you've <a href="#bgoptin">opted in</a> to extended collection, you can also add a list of tag words, such as &quot;post
-    breakfast&quot; or &quot;pizzanight&quot; which will be stored with the entry. (You must use the long form of the
-    command, and their order will not be preserved.) Entries will be stored for 1,000 chat messages, or for however
-    long you specified when opting in.</p>
-    <h2 id="lastbgs">lastbgs</h2>
-    <p><strong>Usage:</strong> <code>lastbgs <em>[count] [tag ...]</em></code></p>
-    <pre>
- 
-</pre>
-    <p>Prints out your last several blood sugar readings. You can specify how many you want to include; by default,
+[22:04:17] &lt;@diabot&gt; Ariensus: 100 mg/dL = 5.5 mmol/L</pre>
+				<p>Stores your blood sugar so it can be recalled later with lastbgs. It also prints a conversion from milligrams
+					per decileter, used in the United States, to millimoles per liter, used in Europe, or the corresponding reverse
+					conversion. If you've <a href="#bgoptin">opted in</a> to extended collection, you can also add a list of tag words, such as &quot;post
+					breakfast&quot; or &quot;pizzanight&quot; which will be stored with the entry. (You must use the long form of the
+					command, and their order will not be preserved.) Entries will be stored for 1,000 chat messages, or for however
+					long you specified when opting in.</p>                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+                      <h2 id="lastbgs">lastbgs</h2>
+                    </a>
+                  </div>
+                  <div id="collapse2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                    <p><strong>Usage:</strong> <code>lastbgs <em>[count] [tag ...]</em></code></p>
+    				<pre>[00:12:02] &lt;trippingbackward&gt; 'lastbgs
+[00:12:02] &lt;diabot&gt; trippingbackward: [11:01] 204, [02:58] 107, and [4:42] 78</pre>
+    			<p>Prints out your last several blood sugar readings. You can specify how many you want to include; by default,
     only up to ten are displayed. If you've<a href="#bgoptin"> opted in</a> to extended collection, you can also add a list of tag words
     (such as &quot;post breakfast&quot; or &quot;pizzanight&quot;), and only entries with all of those tag words will
     be displayed. The entries are displayed in the following format: <code>[time] BG (tag ...)</code>. If the entry is
     less than 24 hours old, only the time will be shown; if the entry is less than 7 days old, the weekday and time
     will be shown; otherwise the month, day, and time will be shown. All entries are shown in US Eastern Standard Time
     (GMT-5) or Eastern Daylight Time (GMT-4).</p>
-    <h2 id="bgoops">bgoops</h2>
-    <p><strong>Usage:</strong> <code>bgoops</code></p>
-    <pre>
-[22:36:48] &lt;awaxa&gt; 297
-[22:36:48] &lt;@diabot&gt; awaxa: 297 mg/dL = 16.5 mmol/L
-[22:36:52] &lt;awaxa&gt; `bgoops
+                    </div>
+                  </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                      <h2 id="bgoops">bgoops</h2>
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>bgoops</code></p>
+    					<pre>
+[11:36:48] &lt;awaxa&gt; 297
+[11:36:48] &lt;@diabot&gt; awaxa: 297 mg/dL = 16.5 mmol/L
+[11:36:52] &lt;awaxa&gt; `bgoops
 [22:36:52] &lt;@diabot&gt; awaxa: The operation succeeded.
 [22:36:56] &lt;awaxa&gt; 207
-[22:36:56] &lt;@diabot&gt; awaxa: 207 mg/dL = 11.5 mmol/L
-</pre>
-    <p>Removes your last blood sugar entry. Useful if you have made a mistake or something has been misinterpreted as a
-    blood sugar.</p>
-    <h2 id="esta1c">esta1c</h2>
+[22:36:56] &lt;@diabot&gt; awaxa: 207 mg/dL = 11.5 mmol/L</pre>
+
+    				<p>Removes your last blood sugar entry. Useful if you have made a mistake or something has been misinterpreted as a
+    				blood sugar.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                      <h2 id="lastbgs">lastbgs</h2>
+                    </a>
+                  </div>
+                  <div id="collapseThree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>lastbgs <em>[count] [tag ...]</em></code></p>
+    			<pre>[00:12:02] &lt;trippingbackward&gt; 'lastbgs
+[00:12:02] &lt;diabot&gt; trippingbackward: [11:01] 204, [02:58] 107, and [4:42] 78</pre>
+    			<p>Prints out your last several blood sugar readings. You can specify how many you want to include; by default,
+    only up to ten are displayed. If you've<a href="#bgoptin"> opted in</a> to extended collection, you can also add a list of tag words
+    (such as &quot;post breakfast&quot; or &quot;pizzanight&quot;), and only entries with all of those tag words will
+    be displayed. The entries are displayed in the following format: <code>[time] BG (tag ...)</code>. If the entry is
+    less than 24 hours old, only the time will be shown; if the entry is less than 7 days old, the weekday and time
+    will be shown; otherwise the month, day, and time will be shown. All entries are shown in US Eastern Standard Time
+    (GMT-5) or Eastern Daylight Time (GMT-4).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                      <h2 id="esta1c">esta1c</h2>
+                    </a>
+                  </div>
+                  <div id="collapseFour" class="accordion-body collapse">
+                    <div class="accordion-inner">
     <p><strong>Usage:</strong> <code>esta1c <em>&lt;average BG&gt;</em></code><br>
     <strong>Shortcut:</strong> <code>ea1c <em>&lt;average BG&gt;</em></code></p>
-    <pre>
- 
-</pre>
+    <pre>[10:48:02] &lt;snuggle&gt; 'esta1c 150
+[10:58:02] &lt;diabot&gt; snuggle: BG 150 mg/dL (8.3 mmol/L) ~= A1C 6.9% (51 mmol/mol)</pre>
     <p>Estimates what the results of a glycated hemoglobin (HbA<sub>1C</sub>) test would be if the patient averaged a
     given blood sugar. As sugar circulates in the blood, it causes small changes to the hemoglobin in red blood cells.
     These changes can be detected and give a window into the amount of glucose present over the lifetime of the cells.
@@ -200,13 +262,23 @@
     measure the percent of all hemoglobin that is glycated (&quot;DCCT&quot;, named after a famous clinical trial, or
     &quot;NGSP&quot;, a standards program set up to match measurements against DCCT), while Europeans measure the
     proportion of molecular weight (&quot;IFCC&quot;, named after a chemistry body).</p>
-    <h2 id="estbg">estbg</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                      <h2 id="estbg">estbg</h2>
+                    </a>
+                  </div>
+                  <div id="collapseFive" class="accordion-body collapse">
+                    <div class="accordion-inner">
     <p><strong>Usage:</strong> <code>estbg <em>&lt;A1C result&gt; [</em>DCCT<em>|</em>IFCC<em>]</em></code><br>
     <strong>Shortcut:</strong> <code>eag <em>&lt;A1C result&gt; [</em>DCCT<em>|</em>IFCC<em>]</em></code><br>
     <strong>Shortcut:</strong> <code>ebg <em>&lt;A1C result&gt; [</em>DCCT<em>|</em>IFCC<em>]</em></code></p>
-    <pre>
+    		<pre>
  
-</pre>
+			</pre>
     <p>Estimates what the average blood sugar over the past 60-90 days was for a patient with the given glycated
     hemoglobin (HbA<sub>1C</sub>) level. As sugar circulates in the blood, it causes small changes to the hemoglobin
     in red blood cells. These changes can be detected and give a window into the amount of glucose present over the
@@ -215,17 +287,26 @@
     clinical trial, or &quot;NGSP&quot;, a standards program set up to match measurements against DCCT), while
     Europeans measure the proportion of molecular weight (&quot;IFCC&quot;, named after a chemistry body). If diabot
     misinterprets the units (very rare), you can explicitly specify DCCT or IFCC units.</p>
+    
     <div class="alert alert-info inset">
       <span class="label label-info">Note</span> This estimation has a very large margin of error. The test assumes a
       body with a normal volume of blood and a &quot;normal&quot; age mix of red blood cell ages. Even if those
-      conditions hold, there is still a lot of variability. For the example given, the 95% confidence range is as large
-      as &#177;32 mg/dL (&#177;1.8 mmol/L). It is not a replacement for regular blood glucose tests.
-    </div>
-    <h2 id="bgoptin">bgoptin</h2>
-    <p><strong>Usage:</strong> <code>bgoptin <em>&lt;count&gt; {</em>days<em>|</em>entries<em>}</em></code></p>
+      conditions hold, there is still a lot of variability. For the example given, the 95% confidence range is as large as &#177;32 mg/dL (&#177;1.8 mmol/L). It is not a replacement for regular blood glucose tests.</div>
+                  	</div>	
+                	</div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                      <h2 id="bgoptin">bgoptin</h2>
+                    </a>
+                  </div>
+                  <div id="collapseSix" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>bgoptin <em>&lt;count&gt; {</em>days<em>|</em>entries<em>}</em></code></p>
     <pre>
- 
-</pre>
+[22:36:48] &lt;trippingbackward&gt; 'bgoptin 90 days
+[22:36:48] &lt;@diabot&gt; trippingbackward: As you wish.</pre>
     <p>Normally diabot only retains the last 1,000 lines of chat history, and the blood sugar entries within it. Using
     this command tells it to store your blood sugar entries in a separate database, retaining them for the length of
     time you specify. You must specify a specific number of days or entries; once entries become older than this, they
@@ -238,22 +319,45 @@
       <span class="label label-warning">Privacy notice</span> While we follow industry standards for safeguarding the
       information stored in diabot, no security is perfect, and we are not responsible should the medical information
       you provide us become public knowledge. We operate this service for your convenience, but with no liability or
-      warranty. If you do not want to take this risk, please do not opt in.
-    </div>
-    <h2 id="bgoptout">bgoptout</h2>
-    <p><strong>Usage:</strong> <code>bgoptout</code></p>
-    <p>Removes all of your blood glucose readings and other information from the database. Only blood glucose readings
-    in the chat history will be accessible after using this command.</p>
-		  <h2 id="disclaimer">disclaimer</h2>
-       <p><strong>Usage:</strong> <code>disclaimer</code></p>
+      warranty. If you do not want to take this risk, please do not opt in. </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">
+                      <h2 id="bgoptout">bgoptout</h2>
+                    </a>
+                  </div>
+                  <div id="collapseSeven" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>bgoptout</code></p>
+    					<p>Removes all of your blood glucose readings and other information from the database. Only blood glucose readings in the chat history will be accessible after using this command.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseEight">
+                      <h2 id="disclaimer">disclaimer</h2>
+                    </a>
+                  </div>
+                  <div id="collapseEight" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                     <p><strong>Usage:</strong> <code>disclaimer</code></p>
+       
 <pre>[02:03:01] &lt;oh_bother&gt; 'disclaimer
 [02:03:02] &lt;@diabot&gt; Remember: none of us are medical professionals in any way, consult your physician or healthcare provider when in doubt</pre>    <div class="alert alert-error inset">
       <span class="label label-important">Disclaimer</span> This FAQ is written by a large group of people with years
       of personal experience with their respective conditions. Nevertheless, none of us are doctors, and this should
       not be construed as medical advice. If you're looking for medical advice, please contact a physician or
-      endocrinologist. Thank you, and be safe.
-    </div>
-
+      endocrinologist. Thank you, and be safe!
+                    </div>
+                  </div>
+                </div>
+            </div>
+</div>
+    
  <h1 id="othercmds">Other useful commands</h1>
     <p>These commands are not specific to diabetes, but they're amusing and you'll see them pretty often.</p>
     <h2><span id="register">register</span>, <span id="identify">identify</span>, <span id="hostmask">hostmask</span></h2>
@@ -312,9 +416,9 @@
 		  again, and <code>gget</code> to show it to the rest of the channel.</p>
     <h2 id="roulette">roulette</h2>
 		  <p><strong>Usage:</strong> <code>roulette <em>[</em>spin<em>]</em></code></p>
-		  <pre>
-
-</pre>
+		<pre>
+[00:00:02] &lt;awaxa&gt; 'roulette
+[00:00:26] &lt;diabot&gt; awaxa: *click*</pre>
 		  <p>A simple Russian Roulette-esque game. When it starts up, diabot puts a "bullet" in one of six "barrels", 
 		  and "spins" them around. A random number from zero to five people can run <code>roulette</code> without ill effects. 
 		  However, eventually someone will be "shot" (kicked from the channel). When that happens, a new bullet is 
@@ -326,8 +430,7 @@
     <strong>Usage:</strong> <code>setflair <em>&lt;statement&gt;</em></code></p>
 		  		  <pre>
 [13:26:50] *** whome` has joined #reddit-diabetes
-[13:26:50] &lt;@diabot&gt; t2 novolog/levemir
-</pre>
+[13:26:50] &lt;@diabot&gt; t2 novolog/levemir </pre>
 <p>&nbsp;</p>
     <h2><span id="dict">dict</span>, <span id="wiki">wiki</span>, <span id="ud">ud</span>, <span id=
     "google">google</span>, <span id="lucky">lucky</span></h2>
@@ -338,9 +441,7 @@
 lucky <em>&lt;search&gt;</em></code></p>
     <pre>[11:50:20] &lt;awaxa&gt; `wiki SIG Sauer GSR
 [11:50:21] &lt;@diabot&gt; awaxa: http://en.wikipedia.org/w/index.php?title=SIG_Sauer_GSR&amp;oldid=474546251
-[11:50:22] &lt;@diabot&gt; awaxa: The SIG Sauer GSR "Granite Series Rail" pistol is a stainless steel frame and slide M1911 clone produced by SIG Sauer. 
-	The SIG Granite Series was awarded the 2004 Handgun of the Year Award by the Shooting Industry Academy of Excellence. It is entirely made 
-	in the USA, from American parts.</pre>
+[11:50:22] &lt;@diabot&gt; awaxa: The SIG Sauer GSR "Granite Series Rail" pistol is a stainless steel frame and slide M1911 clone produced by SIG Sauer. The SIG Granite Series was awarded the 2004 Handgun of the Year Award by the Shooting Industry Academy of Excellence. It is entirely made in the USA, from American parts.</pre>
 <!--<pre>[01:36:17] &lt;Ariensus&gt; `grand
 [01:36:17] &lt;@diabot&gt; Ariensus: &lt;awaxa&gt; tmi? fuck you we all poop
 [01:36:22] &lt;Ariensus&gt; Lawl
@@ -360,8 +461,7 @@ lucky <em>&lt;search&gt;</em></code></p>
 <strong>Usage:</strong> <code>weather <em>&lt;location&gt;</em></code></p>
 		  		  <pre>
 [15:42:25] &lt;ComputerCarl&gt; 'weather 90210
-[15:42:26] &lt;@diabot&gt; ComputerCarl: Current weather for Beverly Hills, CA | Temperature: 66°F / 19°C; Humidity: 65%; 
-	Pressure: 29.88in / 101.2kPa; Conditions: Overcast; Wind: Variable, 5mph / 8kph; Updated: 51 mins, 19 secs ago
+[15:42:26] &lt;@diabot&gt; ComputerCarl: Current weather for Beverly Hills, CA | Temperature: 66°F / 19°C; Humidity: 65%; Pressure: 29.88in / 101.2kPa; Conditions: Overcast; Wind: Variable, 5mph / 8kph; Updated: 51 mins, 19 secs ago
 </pre>
 <p>&nbsp;</p>
 <!--<h2>
@@ -370,6 +470,7 @@ lucky <em>&lt;search&gt;</em></code></p>
     <h3 id="nickserv">Identifying to NickServ</h3>
     <h3 id="joinpart">Joining and parting channels</h3>
     <h3 id="msg">Sending private messages</h3>
+    
   </div><!-- /container -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js" type="text/javascript">
 </script><script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.20/jquery-ui.min.js" type="text/javascript">
