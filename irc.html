@@ -47,14 +47,15 @@
     </div>
     <h1 align="center"id="welcome">Welcome to the /r/Diabetes IRC!</h1>
     
-    <p>A lot of members of the /r/diabetes reddit hang out on IRC, or Internet Relay Chat. You can find us on the
-    <a href="http://www.freenode.net/">Freenode</a> network, in the #reddit-diabetes channel. You can <a href=
-    "irc://chat.freenode.net/reddit-diabetes">add it to your IRC client</a>, or <a href=
-    "http://webchat.freenode.net/?channels=%23reddit-diabetes">connect using your web browser</a>. There's almost
-    always someone awake, and if you're on Google+ you can join our video hangouts as well.</p>
+    <p>A lot of members of the /r/diabetes reddit hang out on IRC, or Internet Relay Chat.<br><br>There are many ways to get involved with our community:</p>
     
-   
-    </p>
+    <p>
+    <span class="badge badge-info">1</span> The Google+ <a href=
+    "http://webchat.freenode.net/?channels=%23reddit-diabetes">Community</a> (Where you will be notified of the G+ Hangouts)
+    <br><span class="badge badge-info">2</span> The Diabetes Subreddit
+    <br>
+    <span class="badge badge-info">3</span> The IRC Channel: Connect using your <a href=
+    "http://webchat.freenode.net/?channels=%23reddit-diabetes">web browser</a> or <a href="#" rel="tooltip" data-placement="left" title="Freenode Server:#reddit-diabetes">IRC Client</a>.</p>
     <p><em>To issue a diabot command, /msg it to the bot or include an accent (` or ') in front of it. To jump
     directly to the documentation for a diabot command, just click it in this list:</em></p>
     <div class="subnav">
@@ -76,7 +77,10 @@
    </p>
   
     <h1>Your first visit</h1>
-    
+    	<div class="alert alert-info">
+            <span class="label label-info">Heads up!</span>
+            If no one is in the room, don't worry. You may have just caught us in a lull. Speak up and someone will respond eventually.
+        </div>
     <p>So you've decided to come visit the IRC channel. Welcome! When you join, you're probably going to see
     something like this:</p>
     <pre>
@@ -154,9 +158,14 @@
  
 </pre>
     <p>This isn't everthing diabot can do, but hopefully you'll feel right at home.</p>
-    <h1>Command reference</h1>
+    <div class="page-header">
+            <h1 align='center'>Command Reference</h1>
+    </div>
+    
     <p><em>As a reminder, commands you send to the channel <em>must</em> begin with <code>`</code>  or <code>'</code> , while commands sent
     privately to the bot <em>must not</em> have anything in front.</em></p>
+<h1> Diabetes Commands </h1>
+<br>
 <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                   <div class="accordion-heading">
@@ -340,8 +349,16 @@ consult your physician or healthcare provider when in doubt</pre>    <div class=
 </div>
     
  <h1 id="othercmds">Other useful commands</h1>
-    <p>These commands are not specific to diabetes, but they're amusing and you'll see them pretty often.</p>
-    <h2><span id="register">register</span>, <span id="identify">identify</span>, <span id="hostmask">hostmask</span></h2>
+    <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                      <h2 id="register, identify, hostmask">register, identify, hostmask</h2>
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                      
 		  <p><strong>Usage:</strong> <code>register <em>&lt;username&gt; &lt;password&gt;</em></code><br>
     <strong>Usage:</strong> <code>identify <em>&lt;username&gt; &lt;password&gt;</em></code><br>
     <strong>Usage:</strong> <code>hostmask add <em>&lt;nick&gt;</em>!<em>&lt;ident&gt;</em>@<em>&lt;example.org&gt;</em></code></p>
@@ -363,8 +380,19 @@ consult your physician or healthcare provider when in doubt</pre>    <div class=
 [16:53:58] &lt;diabot&gt; The operation succeeded.</pre>
 		  <p>This means anyone with a nickname beginning with "TwelveB", logged into their local computer as "jester", 
 		  and connecting from a Washington DC FiOS connection will automatically be identified as "TwelveBaud". You can 
-		  get this information by running <code>/whois</code> on yourself.</p>    <h2><span id="grab">grab</span>, <span id="grand">grand</span></h2>
-		  <p><strong>Usage:</strong> <code>grab <em>&lt;nickname&gt;</em></code><br>
+		  get this information by running <code>/whois</code> on yourself.</p>                     
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+                      <h2 id="grab, grand">grab, grand</h2>
+                    </a>
+                  </div>
+                  <div id="collapse2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>grab <em>&lt;nickname&gt;</em></code><br>
 <strong>Usage:</strong> <code>ungrab</code><br>
 <strong>Usage:</strong> <code>glast <em>&lt;nickname&gt;</em></code><br>
     <strong>Usage:</strong> <code>grand <em>[nickname]</em></code><br><strong>Usage:</strong> <code>
@@ -376,27 +404,24 @@ consult your physician or healthcare provider when in doubt</pre>    <div class=
 [12:57:41] &lt;Ariensus&gt; lol
 [12:57:47] &lt;awaxa&gt; excellent
 </pre>
-<!--<pre>[01:36:17] &lt;Ariensus&gt; `grand
-[01:36:17] &lt;@diabot&gt; Ariensus: &lt;awaxa&gt; tmi? fuck you we all poop
-[01:36:22] &lt;Ariensus&gt; Lawl
-[01:36:28] &lt;Ariensus&gt; `grand
-[01:36:28] &lt;@diabot&gt; Ariensus: &lt;voxparse&gt; Sneakyphil, Master of Subtlety
-[01:36:33] &lt;Ariensus&gt; `grand
-[01:36:33] &lt;@diabot&gt; Ariensus: &lt;gwash&gt; I like tits n drugs
-[01:36:43] &lt;Ariensus&gt; `grand daktaklakpak
-[01:36:43] &lt;@diabot&gt; Ariensus: &lt;daktaklakpak&gt; lol yea I got grabbed earlier and was like... "Uhhhh....."
-        until diabot said something about the operation succeeded
-[01:36:59] &lt;Ariensus&gt; `grand daktaklakpak_
-[01:36:59] &lt;@diabot&gt; Ariensus: &lt;daktaklakpak_&gt; I played wheelchair basketball as a kid in middle school, I felt like Benhur (sp?)
-[01:37:12] &lt;TwelveBaud&gt; `grand Bunnii1
-[01:37:12] &lt;@diabot&gt; TwelveBaud: &lt;Bunnii1&gt; why does awesome sex always end abruptly with me being super low</pre>-->
+
 		  <p><code>grab</code> allows you to save a funny or amusing quote from someone in a private collection to be 
 		  recalled later. If it turns out that what was actually saved just isn't that funny, <code>ungrab</code> can be used to 
 		  remove it. You can also get someone's last quote with <code>glast</code> or (most commonly) a random out-of-context quote 
 		  with <code>grand</code>. Finally, if you remember something about a quote from long ago, you can use <code>gsearch</code> to find it 
 		  again, and <code>gget</code> to show it to the rest of the channel.</p>
-    <h2 id="roulette">roulette</h2>
-		  <p><strong>Usage:</strong> <code>roulette <em>[</em>spin<em>]</em></code></p>
+                    </div>
+                  </div>
+                  </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                      <h2 id="roulette">roulette</h2>
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>roulette <em>[</em>spin<em>]</em></code></p>
 		<pre>
 [00:00:02] &lt;awaxa&gt; 'roulette
 [00:00:26] &lt;diabot&gt; awaxa: *click*</pre>
@@ -405,48 +430,68 @@ consult your physician or healthcare provider when in doubt</pre>    <div class=
 		  However, eventually someone will be "shot" (kicked from the channel). When that happens, a new bullet is 
 		  inserted and the game restarts. You can also manually "spin" the barrels to reset your chances. Do you feel 
 		  lucky? Well, <em>do you?</em></p>
-    <h2><span id="flair">flair</span>, <span id="setflair">setflair</span></h2>
-		  <p>
-<strong>Usage:</strong> <code>flair <em>&lt;nickname&gt;</em></code><br>
-    <strong>Usage:</strong> <code>setflair <em>&lt;statement&gt;</em></code></p>
-		  		  <pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                      <h2 id="flair">flair</h2>
+                    </a>
+                  </div>
+                  <div id="collapseFour" class="accordion-body collapse">
+                    <div class="accordion-inner">
+     					<p>
+						<strong>Usage:</strong> <code>flair <em>&lt;nickname&gt;</em></code><br>
+    					<strong>Usage:</strong> <code>setflair <em>&lt;statement&gt;</em></code></p>
+		  		 	 <pre>
 [13:26:50] *** whome` has joined #reddit-diabetes
 [13:26:50] &lt;@diabot&gt; t2 novolog/levemir </pre>
-<p>&nbsp;</p>
-    <h2><span id="dict">dict</span>, <span id="wiki">wiki</span>, <span id="ud">ud</span>, <span id=
-    "google">google</span>, <span id="lucky">lucky</span></h2>
-		  <p><strong>Usage:</strong> <code>dict <em>&lt;term&gt;</em></code><br>
+					<p>&nbsp;</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                      <h2 id="estbg">dict, wiki, ud, google, lucky</h2>
+                    </a>
+                  </div>
+                  <div id="collapseFive" class="accordion-body collapse">
+                    <div class="accordion-inner">
+    <p><strong>Usage:</strong> <code>dict <em>&lt;term&gt;</em></code><br>
 <strong>Usage:</strong> <code>wiki <em>&lt;thing&gt;</em></code><br>
 <strong>Usage:</strong> <code>ud <em>&lt;slang&gt;</em></code><br>
     <strong>Usage:</strong> <code>google <em>&lt;search&gt;</em></code><br><strong>Usage:</strong> <code>
 lucky <em>&lt;search&gt;</em></code></p>
     <pre>[11:50:20] &lt;awaxa&gt; `wiki SIG Sauer GSR
 [11:50:21] &lt;@diabot&gt; awaxa: http://en.wikipedia.org/w/index.php?title=SIG_Sauer_GSR&amp;oldid=474546251
-[11:50:22] &lt;@diabot&gt; awaxa: The SIG Sauer GSR "Granite Series Rail" pistol is a stainless steel frame and slide M1911 clone produced by SIG Sauer. The SIG Granite Series was awarded the 2004 Handgun of the Year Award by the Shooting Industry Academy of Excellence. It is entirely made in the USA, from American parts.</pre>
-<!--<pre>[01:36:17] &lt;Ariensus&gt; `grand
-[01:36:17] &lt;@diabot&gt; Ariensus: &lt;awaxa&gt; tmi? fuck you we all poop
-[01:36:22] &lt;Ariensus&gt; Lawl
-[01:36:28] &lt;Ariensus&gt; `grand
-[01:36:28] &lt;@diabot&gt; Ariensus: &lt;voxparse&gt; Sneakyphil, Master of Subtlety
-[01:36:33] &lt;Ariensus&gt; `grand
-[01:36:33] &lt;@diabot&gt; Ariensus: &lt;gwash&gt; I like tits n drugs
-[01:36:43] &lt;Ariensus&gt; `grand daktaklakpak
-[01:36:43] &lt;@diabot&gt; Ariensus: &lt;daktaklakpak&gt; lol yea I got grabbed earlier and was like... "Uhhhh....."
-        until diabot said something about the operation succeeded
-[01:36:59] &lt;Ariensus&gt; `grand daktaklakpak_
-[01:36:59] &lt;@diabot&gt; Ariensus: &lt;daktaklakpak_&gt; I played wheelchair basketball as a kid in middle school, I felt like Benhur (sp?)
-[01:37:12] &lt;TwelveBaud&gt; `grand Bunnii1
-[01:37:12] &lt;@diabot&gt; TwelveBaud: &lt;Bunnii1&gt; why does awesome sex always end abruptly with me being super low</pre>-->
+[11:50:22] &lt;@diabot&gt; awaxa: The SIG Sauer GSR "Granite Series Rail" pistol is a stainless steel frame and slide M1911 clone produced by SIG Sauer. The SIG Granite Series was awarded the 2004 Handgun of the Year Award by the Shooting 
+Industry Academy of Excellence. It is entirely made in the USA, from American parts.</pre>
+
 		  <p>&nbsp;</p>
-		  <h2 id="weather">weather</h2><p>
-<strong>Usage:</strong> <code>weather <em>&lt;location&gt;</em></code></p>
+                  	</div>	
+                	</div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                      <h2 id="weather">weather</h2>
+                    </a>
+                  </div>
+                  	<div id="collapseSix" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                    <strong>Usage:</strong> <code>weather <em>&lt;location&gt;</em></code></p>
 		  		  <pre>
 [15:42:25] &lt;ComputerCarl&gt; 'weather 90210
-[15:42:26] &lt;@diabot&gt; ComputerCarl: Current weather for Beverly Hills, CA | Temperature: 66°F / 19°C; Humidity: 65%; Pressure: 29.88in / 101.2kPa; Conditions: Overcast; Wind: Variable, 5mph / 8kph; Updated: 51 mins, 19 secs ago
-</pre>
+[15:42:26] &lt;@diabot&gt; ComputerCarl: Current weather for Beverly Hills, CA | Temperature: 66°F / 19°C; Humidity: 65%; 
+Pressure: 29.88in / 101.2kPa; Conditions: Overcast; Wind: Variable, 5mph / 8kph; Updated: 51 mins, 19 secs ago</pre>
 <p>&nbsp;</p>
-<!--<h2>
-                say, tell, later</h2>-->
+                    </div>
+                  </div>
+                </div>
+                
+</div>
     <h1 id="irccmds">IRC commands</h1>
     <h3 id="nickserv">Identifying to NickServ</h3>
     <h3 id="joinpart">Joining and parting channels</h3>

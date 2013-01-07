@@ -27,78 +27,147 @@
  </head>
 
  <h1>Diabetes-Related Diabot Commands</h1> 
- <div class="bs-docs-example">
-              <div class="accordion" id="accordion2">
+ 
+ <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  <h2 id="bg">bg</h2>
+                      <h2 id="register, identify, hostmask">register, identify, hostmask</h2>
                     </a>
                   </div>
                   <div id="collapseOne" class="accordion-body collapse in">
                     <div class="accordion-inner">
-                 <p><strong>Usage:</strong> <code>bg <em>&lt;test result&gt; [tag ...]</em></code><br>
-    <strong>Shortcut:</strong> <code><em>&lt;test result&gt;</em></code></p>
-    <pre>
-[22:04:17] &lt;Ariensus&gt; 100
-[22:04:17] &lt;@diabot&gt; Ariensus: 100 mg/dL = 5.5 mmol/L
+                      
+		  <p><strong>Usage:</strong> <code>register <em>&lt;username&gt; &lt;password&gt;</em></code><br>
+    <strong>Usage:</strong> <code>identify <em>&lt;username&gt; &lt;password&gt;</em></code><br>
+    <strong>Usage:</strong> <code>hostmask add <em>&lt;nick&gt;</em>!<em>&lt;ident&gt;</em>@<em>&lt;example.org&gt;</em></code></p>
+        <div class="alert alert-info inset">
+      <span class="label label-info">Note</span> These commands must be sent privately to the bot, because they include 
+				a password. Also, this is different from <a href="#nickserv">identifying to NickServ</a> and 
+				<a href="#bgoptin">opting in</a> to data collection.</div>
+    <pre style="background-color:bisque">
+[18:05:57] &lt;TwelveBaud&gt; identify TwelveBaud <span style="color:coral" title="Not actually my real password. ;)">googlyB34R</span>
+[18:05:58] &lt;diabot&gt; The operation succeeded.
 </pre>
-    <p>Stores your blood sugar so it can be recalled later with lastbgs. It also prints a conversion from milligrams
-    per decileter, used in the United States, to millimoles per liter, used in Europe, or the corresponding reverse
-    conversion. If you've <a href="#bgoptin">opted in</a> to extended collection, you can also add a list of tag words, such as &quot;post
-    breakfast&quot; or &quot;pizzanight&quot; which will be stored with the entry. (You must use the long form of the
-    command, and their order will not be preserved.) Entries will be stored for 1,000 chat messages, or for however
-    long you specified when opting in.</p>
+		  <p>Registering with diabot allows you to use the <a href="#flair">flair</a> features and, if you've opted into data collection and 
+		  set a hostmask, lets your BG information follow nickname changes. It also allows awaxa to consider you for 
+		  additional privileges. However, it is not compulsary, and most members of the channel aren't registered there. 
+		  Once you've registered, you can identify yourself to have access to these features.</p>
+		  <p>You can also use hostmasks as a way to automatically log you in, so you don't need to identify yourself. 
+		  Unfortunately, discussing them in depth is beyond the scope of this article, but here is one example:</p>
+		  <pre style="background-color:bisque">[16:53:58] &lt;TwelveBaud&gt; hostmask add TwelveB*!~jester@*.washdc.fios.verizon.net
+[16:53:58] &lt;diabot&gt; The operation succeeded.</pre>
+		  <p>This means anyone with a nickname beginning with "TwelveB", logged into their local computer as "jester", 
+		  and connecting from a Washington DC FiOS connection will automatically be identified as "TwelveBaud". You can 
+		  get this information by running <code>/whois</code> on yourself.</p>                     
                     </div>
                   </div>
                 </div>
                 <div class="accordion-group">
                   <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+                      <h2 id="grab, grand">grab, grand</h2>
+                    </a>
+                  </div>
+                  <div id="collapse2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><strong>Usage:</strong> <code>grab <em>&lt;nickname&gt;</em></code><br>
+<strong>Usage:</strong> <code>ungrab</code><br>
+<strong>Usage:</strong> <code>glast <em>&lt;nickname&gt;</em></code><br>
+    <strong>Usage:</strong> <code>grand <em>[nickname]</em></code><br><strong>Usage:</strong> <code>
+		  gsearch <em>&lt;text&gt;</em></code><br>
+    <strong>Usage:</strong> <code>gget <em>&lt;ID number from gsearch&gt;</em></code></p>
+    <pre>[12:56:59] &lt;Ariensus&gt; It's more my disdain for putting on clothing in general than just pants
+[12:57:34] &lt;TwelveBaud&gt; `grab Ariensus
+[12:57:34] &lt;@diabot&gt; TwelveBaud: The operation succeeded.
+[12:57:41] &lt;Ariensus&gt; lol
+[12:57:47] &lt;awaxa&gt; excellent
+</pre>
+
+		  <p><code>grab</code> allows you to save a funny or amusing quote from someone in a private collection to be 
+		  recalled later. If it turns out that what was actually saved just isn't that funny, <code>ungrab</code> can be used to 
+		  remove it. You can also get someone's last quote with <code>glast</code> or (most commonly) a random out-of-context quote 
+		  with <code>grand</code>. Finally, if you remember something about a quote from long ago, you can use <code>gsearch</code> to find it 
+		  again, and <code>gget</code> to show it to the rest of the channel.</p>
+                    </div>
+                  </div>
+                  </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                      <h2 id="lastbgs">lastbgs</h2>
+                      <h2 id="roulette">roulette</h2>
                     </a>
                   </div>
                   <div id="collapseTwo" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <p><strong>Usage:</strong> <code>lastbgs <em>[count] [tag ...]</em></code></p>
-    <pre>
- 
-</pre>
-    <p>Prints out your last several blood sugar readings. You can specify how many you want to include; by default,
-    only up to ten are displayed. If you've<a href="#bgoptin"> opted in</a> to extended collection, you can also add a list of tag words
-    (such as &quot;post breakfast&quot; or &quot;pizzanight&quot;), and only entries with all of those tag words will
-    be displayed. The entries are displayed in the following format: <code>[time] BG (tag ...)</code>. If the entry is
-    less than 24 hours old, only the time will be shown; if the entry is less than 7 days old, the weekday and time
-    will be shown; otherwise the month, day, and time will be shown. All entries are shown in US Eastern Standard Time
-    (GMT-5) or Eastern Daylight Time (GMT-4).</p>
+                      <p><strong>Usage:</strong> <code>roulette <em>[</em>spin<em>]</em></code></p>
+		<pre>
+[00:00:02] &lt;awaxa&gt; 'roulette
+[00:00:26] &lt;diabot&gt; awaxa: *click*</pre>
+		  <p>A simple Russian Roulette-esque game. When it starts up, diabot puts a "bullet" in one of six "barrels", 
+		  and "spins" them around. A random number from zero to five people can run <code>roulette</code> without ill effects. 
+		  However, eventually someone will be "shot" (kicked from the channel). When that happens, a new bullet is 
+		  inserted and the game restarts. You can also manually "spin" the barrels to reset your chances. Do you feel 
+		  lucky? Well, <em>do you?</em></p>
                     </div>
                   </div>
                 </div>
                 <div class="accordion-group">
                   <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                      <h2 id="bgoops">bgoops</h2>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                      <h2 id="flair">flair</h2>
                     </a>
                   </div>
-                  <div id="collapseThree" class="accordion-body collapse">
+                  <div id="collapseFour" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <p><strong>Usage:</strong> <code>bgoops</code></p>
-    <pre>
-[11:36:48] &lt;awaxa&gt; 297
-[11:36:48] &lt;@diabot&gt; awaxa: 297 mg/dL = 16.5 mmol/L
-[11:36:52] &lt;awaxa&gt; `bgoops
-[22:36:52] &lt;@diabot&gt; awaxa: The operation succeeded.
-[22:36:56] &lt;awaxa&gt; 207
-[22:36:56] &lt;@diabot&gt; awaxa: 207 mg/dL = 11.5 mmol/L</pre>
-
-    <p>Removes your last blood sugar entry. Useful if you have made a mistake or something has been misinterpreted as a
-    blood sugar.</p>
-                   </div>
+     					<p>
+						<strong>Usage:</strong> <code>flair <em>&lt;nickname&gt;</em></code><br>
+    					<strong>Usage:</strong> <code>setflair <em>&lt;statement&gt;</em></code></p>
+		  		 	 <pre>
+[13:26:50] *** whome` has joined #reddit-diabetes
+[13:26:50] &lt;@diabot&gt; t2 novolog/levemir </pre>
+					<p>&nbsp;</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            
-        
-            
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                      <h2 id="estbg">dict, wiki, ud, google, lucky</h2>
+                    </a>
+                  </div>
+                  <div id="collapseFive" class="accordion-body collapse">
+                    <div class="accordion-inner">
+    <p><strong>Usage:</strong> <code>dict <em>&lt;term&gt;</em></code><br>
+<strong>Usage:</strong> <code>wiki <em>&lt;thing&gt;</em></code><br>
+<strong>Usage:</strong> <code>ud <em>&lt;slang&gt;</em></code><br>
+    <strong>Usage:</strong> <code>google <em>&lt;search&gt;</em></code><br><strong>Usage:</strong> <code>
+lucky <em>&lt;search&gt;</em></code></p>
+    <pre>[11:50:20] &lt;awaxa&gt; `wiki SIG Sauer GSR
+[11:50:21] &lt;@diabot&gt; awaxa: http://en.wikipedia.org/w/index.php?title=SIG_Sauer_GSR&amp;oldid=474546251
+[11:50:22] &lt;@diabot&gt; awaxa: The SIG Sauer GSR "Granite Series Rail" pistol is a stainless steel frame and slide M1911 clone produced by SIG Sauer. The SIG Granite Series was awarded the 2004 Handgun of the Year Award by the Shooting 
+Industry Academy of Excellence. It is entirely made in the USA, from American parts.</pre>
+
+		  <p>&nbsp;</p>
+                  	</div>	
+                	</div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                      <h2 id="weather">weather</h2>
+                    </a>
+                  </div>
+                  	<div id="collapseSix" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                    <strong>Usage:</strong> <code>weather <em>&lt;location&gt;</em></code></p>
+		  		  <pre>
+[15:42:25] &lt;ComputerCarl&gt; 'weather 90210
+[15:42:26] &lt;@diabot&gt; ComputerCarl: Current weather for Beverly Hills, CA | Temperature: 66°F / 19°C; Humidity: 65%; 
+Pressure: 29.88in / 101.2kPa; Conditions: Overcast; Wind: Variable, 5mph / 8kph; Updated: 51 mins, 19 secs ago</pre>
+<p>&nbsp;</p>
+                    </div>
+                  </div>
+                </div>
+                
+</div>
